@@ -1,3 +1,8 @@
 <h1>
   {{title}}
 </h1>
+
+  <ul>
+    <li *ngFor="let team of teams; let i=index">{{team.name}}</li>
+  </ul>
+
