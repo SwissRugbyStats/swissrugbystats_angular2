@@ -1,0 +1,5 @@
+<ul>
+    <li *ngFor="let g of games; let i=index">
+      <a routerLink="/game/{{g.id}}" routerLinkActive="active">{{g.host.team.name}} vs {{g.guest.team.name}}</a></li>
+
+</ul>

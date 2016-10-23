@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TeamService } from './team/team.service';
 import { Team } from './team/team';
+import { TeamListComponent } from './team/team-list/team-list.component'
 
 @Component({
   selector: 'app-root',

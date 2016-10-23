@@ -6,4 +6,9 @@ export class Team {
   custom_logo: string;
   current_competition: number;
   club: number;
+  pointCount: number;
+  gameCount: number;
+  winCount: number;
+  drawCount: number;
+  lossCount: number;
 }
