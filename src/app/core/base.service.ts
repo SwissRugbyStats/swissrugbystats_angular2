@@ -8,13 +8,13 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class BaseService<T,S> {
+export class BaseService<T, S> {
 
-    apiUrl : string;
+    apiUrl: string;
     epUrl: string;
 
     constructor(public http: Http, private endpoint: string) {
-        this.apiUrl = "http://api.swissrugbystats.ch/";
+        this.apiUrl = 'http://api.swissrugbystats.ch/';
         this.epUrl = `${this.apiUrl}${endpoint}`;
     }
 

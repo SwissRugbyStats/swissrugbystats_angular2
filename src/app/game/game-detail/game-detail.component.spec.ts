@@ -5,7 +5,7 @@ import { GameDetailComponent } from './game-detail.component';
 
 describe('Component: GameDetail', () => {
   it('should create an instance', () => {
-    let component = new GameDetailComponent();
+    let component = new GameDetailComponent(null, null, null);
     expect(component).toBeTruthy();
   });
 });

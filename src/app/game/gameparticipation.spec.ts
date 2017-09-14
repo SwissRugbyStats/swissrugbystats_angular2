@@ -1,10 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
-import { addProviders, async, inject } from '@angular/core/testing';
-import {Gameparticipation} from './gameparticipation';
+
+import { GameParticipation } from './gameparticipation';
 
 describe('Gameparticipation', () => {
   it('should create an instance', () => {
-    expect(new Gameparticipation()).toBeTruthy();
+    expect(new GameParticipation()).toBeTruthy();
   });
 });

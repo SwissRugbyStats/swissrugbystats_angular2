@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {GameDetailComponent} from "./game/game-detail/game-detail.component";
-import {GameListComponent} from "./game/game-list/game-list.component";
-import {TeamListComponent} from "./team/team-list/team-list.component";
-import {TeamDetailComponent} from "./team/team-detail/team-detail.component";
+import {GameDetailComponent} from './game/game-detail/game-detail.component';
+import {GameListComponent} from './game/game-list/game-list.component';
+import {TeamListComponent} from './team/team-list/team-list.component';
+import {TeamDetailComponent} from './team/team-detail/team-detail.component';
+import {ClubListComponent} from './club/club-list/club-list.component';
+import {ClubDetailComponent} from './club/club-detail/club-detail.component';
 
 const routes: Routes = [
   { path: 'games', component: GameListComponent },
   { path: 'game/:id', component: GameDetailComponent },
   { path: 'teams', component: TeamListComponent},
   { path: 'team/:id', component: TeamDetailComponent},
+  { path: 'clubs', component: ClubListComponent},
+  { path: 'club/:id', component: ClubDetailComponent},
   { path: '', component: TeamListComponent},
   { path: '**', component: TeamListComponent}
 ];

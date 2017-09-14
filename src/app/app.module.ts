@@ -9,7 +9,9 @@ import { TeamListComponent } from './team/team-list/team-list.component';
 import { TeamDetailComponent } from './team/team-detail/team-detail.component';
 import { GameDetailComponent } from './game/game-detail/game-detail.component';
 import { GameListComponent } from './game/game-list/game-list.component';
-import {ChSwissrugbystatsAngular2RoutingModule} from "./app-routing.module";
+import {ChSwissrugbystatsAngular2RoutingModule} from './app-routing.module';
+import {ClubDetailComponent} from './club/club-detail/club-detail.component';
+import {ClubListComponent} from './club/club-list/club-list.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,15 @@ import {ChSwissrugbystatsAngular2RoutingModule} from "./app-routing.module";
     TeamListComponent,
     TeamDetailComponent,
     GameDetailComponent,
-    GameListComponent
+    GameListComponent,
+    ClubDetailComponent,
+    ClubListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     ChSwissrugbystatsAngular2RoutingModule
   ],
   providers: [],
