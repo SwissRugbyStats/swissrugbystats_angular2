@@ -2,3 +2,38 @@
 <p>
   {{team?.name}}
 </p>
+
+<table *ngIf="team">
+  <tr>
+    <td>Spiel-Punkte gesamt</td>
+    <td>{{ team.point_count }}</td>
+  </tr>
+  <tr>
+    <td>Score gesamt</td>
+    <td>{{ team.score_count }}</td>
+  </tr>
+  <tr>
+    <td>Tries gesamt</td>
+    <td>{{ team.try_count }}</td>
+  </tr>
+  <tr>
+    <td>Karten gesamt</td>
+    <td>{{ team.card_count }}</td>
+  </tr>
+  <tr>
+    <td>Spiele gesamt</td>
+    <td>{{ team.game_count }}</td>
+  </tr>
+  <tr>
+    <td>Siege gesamt</td>
+    <td>{{ team.win_count }}</td>
+  </tr>
+  <tr>
+    <td>Niederlagen gesamt</td>
+    <td>{{ team.loss_count }}</td>
+  </tr>
+    <tr>
+    <td>Unentschieden gesamt</td>
+    <td>{{ team.draw_count }}</td>
+  </tr>
+</table>
