@@ -6,7 +6,7 @@
   <!-- Date column -->
   <ng-container matColumnDef="date">
     <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-    <mat-cell *matCellDef="let game">{{game.date}}</mat-cell>
+    <mat-cell *matCellDef="let game">{{game.date | date:'longDate'}} </mat-cell>
   </ng-container>
 
   <!-- Host team column -->

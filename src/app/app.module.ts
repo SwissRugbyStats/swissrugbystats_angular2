@@ -12,6 +12,7 @@ import { GameListComponent } from './states/game/game-list/game-list.component';
 import {ChSwissrugbystatsAngular2RoutingModule} from './app-routing.module';
 import {ClubDetailComponent} from './states/club/club-detail/club-detail.component';
 import {ClubListComponent} from './states/club/club-list/club-list.component';
+import {CommonModule} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,13 @@ import {ClubListComponent} from './states/club/club-list/club-list.component';
     GameDetailComponent,
     GameListComponent,
     ClubDetailComponent,
-    ClubListComponent,
+    ClubListComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    CommonModule,
     MaterialModule,
     ChSwissrugbystatsAngular2RoutingModule
   ],
