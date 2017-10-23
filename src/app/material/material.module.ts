@@ -9,11 +9,13 @@ import {
   MatInputModule,
   MatFormFieldModule
 } from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
   ],
   imports: [
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,
@@ -24,6 +26,7 @@ import {
     MatFormFieldModule
   ],
   exports: [
+    BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
     MatToolbarModule,

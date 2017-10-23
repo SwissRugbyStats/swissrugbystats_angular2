@@ -15,6 +15,7 @@ export class BaseService<T, S> {
 
     constructor(public http: Http, private endpoint: string) {
         this.apiUrl = 'http://api.swissrugbystats.ch/';
+        // this.apiUrl = 'http://swissrugbystats-backend.herokuapp.com/';
         this.epUrl = `${this.apiUrl}${endpoint}`;
     }
 
