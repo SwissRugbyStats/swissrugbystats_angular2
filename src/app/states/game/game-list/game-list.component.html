@@ -1,14 +1,34 @@
 <mat-progress-spinner mode="indeterminate" *ngIf="loading">
 </mat-progress-spinner>
 
-<mat-list>
-  <mat-list-item *ngFor="let g of games; let i=index">
-    <a routerLink="/game/{{g.id}}" routerLinkActive="active">{{g.host.team.name}} vs {{g.guest.team.name}}</a>
-  </mat-list-item>
-</mat-list>
+<mat-table #table [dataSource]="dataSource">
 
-<!--<ul>
-    <li *ngFor="let g of games; let i=index">
-      <a routerLink="/game/{{g.id}}" routerLinkActive="active">{{g.host.team.name}} vs {{g.guest.team.name}}</a></li>
+  <!-- Date column -->
+  <ng-container matColumnDef="date">
+    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+    <mat-cell *matCellDef="let game">{{game.date}}</mat-cell>
+  </ng-container>
 
-</ul>-->
+  <!-- Host team column -->
+  <ng-container matColumnDef="hostTeam">
+    <mat-header-cell *matHeaderCellDef>Host</mat-header-cell>
+    <mat-cell *matCellDef="let game">{{game.host.team.name}}</mat-cell>
+  </ng-container>
+
+  <!-- Guest team column -->
+  <ng-container matColumnDef="guestTeam">
+    <mat-header-cell *matHeaderCellDef>Guest</mat-header-cell>
+    <mat-cell *matCellDef="let game">{{game.guest.team.name}}</mat-cell>
+  </ng-container>
+
+  <!-- Result column -->
+  <ng-container matColumnDef="result">
+    <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
+    <mat-cell *matCellDef="let game">{{game.host.score}} : {{game.guest.score}}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="['date', 'hostTeam', 'guestTeam', 'result']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['date', 'hostTeam', 'guestTeam', 'result'];"></mat-row>
+
+
+</mat-table>
