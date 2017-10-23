@@ -10,15 +10,24 @@ import { TeamService } from '../team.service';
 })
 export class TeamListComponent implements OnInit {
 
-  teams: Array<Team> = [];
+  private _teams: Array<Team> = [];
+  private filter: string;
 
   constructor(teamservice: TeamService) {
     teamservice.getList().subscribe((t => {
-      this.teams = t;
+      this._teams = t;
     }));
   }
 
   ngOnInit() {
+  }
+
+  get teams(): Array<Team> {
+    if (this.filter) {
+      return this._teams.filter(val => val.name.toLowerCase().indexOf(this.filter.toLowerCase()) !== -1);
+    } else {
+      return this._teams;
+    }
   }
 
 }

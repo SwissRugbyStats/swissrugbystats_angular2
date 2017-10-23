@@ -11,11 +11,13 @@ import {GameService} from "../game.service";
 export class GameListComponent implements OnInit {
 
   games: Array<Game> = [];
+  loading: boolean = true;
 
   constructor(private service: GameService) {}
 
   ngOnInit() {
     this.service.getList().subscribe((g => {
+      this.loading = false;
       this.games = g;
     }));
   }

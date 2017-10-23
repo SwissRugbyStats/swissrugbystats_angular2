@@ -1,5 +1,14 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatCheckboxModule, MatToolbarModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatProgressSpinnerModule,
+  MatListModule,
+  MatSidenavModule,
+  MatInputModule,
+  MatFormFieldModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -7,12 +16,22 @@ import { MatButtonModule, MatCheckboxModule, MatToolbarModule } from '@angular/m
   imports: [
     MatButtonModule,
     MatCheckboxModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressSpinnerModule,
+    MatListModule,
+    MatSidenavModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
 })

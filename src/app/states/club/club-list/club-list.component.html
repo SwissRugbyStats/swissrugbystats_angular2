@@ -1,5 +1,5 @@
-<ul>
-    <li *ngFor="let club of clubs; let i=index">
-      <a routerLink="/club/{{club.id}}" routerLinkActive="active">{{club.name}}</a></li>
-
-</ul>
+<mat-list>
+  <mat-list-item *ngFor="let club of clubs; let i=index">
+    <a routerLink="/club/{{club.id}}" routerLinkActive="active">{{club.name}}</a>
+  </mat-list-item>
+</mat-list>

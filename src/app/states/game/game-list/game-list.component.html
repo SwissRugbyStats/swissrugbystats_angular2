@@ -1,5 +1,14 @@
-<ul>
+<mat-progress-spinner mode="indeterminate" *ngIf="loading">
+</mat-progress-spinner>
+
+<mat-list>
+  <mat-list-item *ngFor="let g of games; let i=index">
+    <a routerLink="/game/{{g.id}}" routerLinkActive="active">{{g.host.team.name}} vs {{g.guest.team.name}}</a>
+  </mat-list-item>
+</mat-list>
+
+<!--<ul>
     <li *ngFor="let g of games; let i=index">
       <a routerLink="/game/{{g.id}}" routerLinkActive="active">{{g.host.team.name}} vs {{g.guest.team.name}}</a></li>
 
-</ul>
+</ul>-->
