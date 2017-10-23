@@ -5,6 +5,9 @@
   "angular-cli": {},
   "scripts": {
     "start": "ng serve",
+    "build": "ng build",
+    "heroku-prebuild": "npm install -g http-server",
+    "heroku-postbuild": "ng build --prod",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",
