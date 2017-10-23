@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {GameDetailComponent} from './game/game-detail/game-detail.component';
-import {GameListComponent} from './game/game-list/game-list.component';
-import {TeamListComponent} from './team/team-list/team-list.component';
-import {TeamDetailComponent} from './team/team-detail/team-detail.component';
-import {ClubListComponent} from './club/club-list/club-list.component';
-import {ClubDetailComponent} from './club/club-detail/club-detail.component';
+import {GameDetailComponent} from './states/game/game-detail/game-detail.component';
+import {GameListComponent} from './states/game/game-list/game-list.component';
+import {TeamListComponent} from './states/team/team-list/team-list.component';
+import {TeamDetailComponent} from './states/team/team-detail/team-detail.component';
+import {ClubListComponent} from './states/club/club-list/club-list.component';
+import {ClubDetailComponent} from './states/club/club-detail/club-detail.component';
 
 const routes: Routes = [
   { path: 'games', component: GameListComponent },

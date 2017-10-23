@@ -1,14 +1,25 @@
-<h1>
-  {{title}}
-</h1>
+<mat-toolbar color="primary">
+  <h1>
+    {{title}}
+  </h1>
 
-<nav>
+  <nav>
+    <a mat-button routerLink="/teams" routerLinkActive="active">Teams</a>
+    <a mat-button routerLink="/clubs" routerLinkActive="active">Clubs</a>
+    <a mat-button routerLink="/games" routerLinkActive="active">Games</a>
+  </nav>
+
+</mat-toolbar>
+
+<!--<nav class="header primary-nav">
   <ul>
     <li><a routerLink="/teams" routerLinkActive="active">Teams</a></li>
     <li><a routerLink="/clubs" routerLinkActive="active">Clubs</a></li>
     <li><a routerLink="/games" routerLinkActive="active">Games</a></li>
   </ul>
-</nav>
+</nav>-->
+
+
 
 <router-outlet></router-outlet>
 

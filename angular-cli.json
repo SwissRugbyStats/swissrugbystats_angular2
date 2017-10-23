@@ -1,6 +1,5 @@
 {
   "project": {
-    "version": "1.0.0-beta.16",
     "name": "ch-swissrugbystats-angular2"
   },
   "apps": [
@@ -15,7 +14,7 @@
       "prefix": "app",
       "mobile": false,
       "styles": [
-        "styles.css"
+        "styles.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -38,7 +37,7 @@
     }
   },
   "defaults": {
-    "styleExt": "css",
+    "styleExt": "scss",
     "prefixInterfaces": false
   }
 }

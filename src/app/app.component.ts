@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { TeamService } from './team/team.service';
-import { Team } from './team/team';
-import { TeamListComponent } from './team/team-list/team-list.component'
+import { TeamService } from './states/team/team.service';
+import { Team } from './states/team/team';
+import { TeamListComponent } from './states/team/team-list/team-list.component'
 
 @Component({
   selector: 'app-root',
@@ -10,7 +10,7 @@ import { TeamListComponent } from './team/team-list/team-list.component'
   providers: [TeamService]
 })
 export class AppComponent {
-  title = 'app works!';
+  title = 'Swiss Rugby Stats 2.0';
   teams: Array<Team> = [];
 
   constructor(teamservice: TeamService) {
