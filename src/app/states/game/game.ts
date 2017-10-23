@@ -1,4 +1,5 @@
 import {GameParticipation} from "./gameparticipation";
+import {Venue} from "../venue/venue";
 
 export class Game {
   id: number;
@@ -8,6 +9,6 @@ export class Game {
   fsrUrl: string;
   date: string;
   competition: number;
-  venue: number;
-  referee: number;
+  venue: any;
+  referee: any;
 }

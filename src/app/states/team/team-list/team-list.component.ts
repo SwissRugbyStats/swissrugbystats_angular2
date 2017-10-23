@@ -11,7 +11,7 @@ import { TeamService } from '../team.service';
 export class TeamListComponent implements OnInit {
 
   private _teams: Array<Team> = [];
-  private filter: string;
+  public filter: string;
 
   constructor(teamservice: TeamService) {
     teamservice.getList().subscribe((t => {

@@ -6,4 +6,5 @@ export class GameParticipation {
   tries: number;
   redCards: number;
   points: number;
+  forfait: boolean;
 }
