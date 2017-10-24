@@ -4,14 +4,14 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "http-server dist/",
-    "build": "ng build",
-    "heroku-prebuild": "npm install -g http-server",
-    "heroku-postbuild": "ng build --prod",
-    "lint": "tslint \"src/**/*.ts\"",
+    "ng": "ng",
     "test": "ng test",
-    "pree2e": "webdriver-manager update",
-    "e2e": "protractor"
+    "lint": "ng lint",
+    "build": "ng build",
+    "e2e": "ng e2e",
+    "start": "http-server dist/",
+    "heroku-prebuild": "npm install -g http-server",
+    "heroku-postbuild": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -29,11 +29,10 @@
     "core-js": "^2.5.0",
     "foundation-sites": "^6.4.3",
     "rxjs": "^5.5.0",
-    "zone.js": "^0.8.18",
-    "@angular/cli": "1.4.9"
-
+    "zone.js": "^0.8.18"
   },
   "devDependencies": {
+    "@angular/cli": "1.4.9",
     "@angular/compiler-cli": "4.4.6",
     "@types/jasmine": "2.6.0",
     "@types/node": "~8.0.46",
@@ -52,7 +51,7 @@
     "typescript": "2.3.0"
   },
   "engines": {
-    "node": "6.10.0",
-    "npm": "3.10.8"
+    "node": "8.6.0",
+    "npm": "5.5.1"
   }
 }
