@@ -13,6 +13,7 @@ import {ChSwissrugbystatsAngular2RoutingModule} from './app-routing.module';
 import {ClubDetailComponent} from './states/club/club-detail/club-detail.component';
 import {ClubListComponent} from './states/club/club-list/club-list.component';
 import {CommonModule} from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {CommonModule} from '@angular/common';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     CommonModule,
     MaterialModule,
     ChSwissrugbystatsAngular2RoutingModule
