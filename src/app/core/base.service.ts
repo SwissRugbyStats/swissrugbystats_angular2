@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 
-import {Observable} from 'rxjs/Rx';
+import { Observable } from 'rxjs/Rx';
 
 // Import RxJs required methods
 import 'rxjs/add/operator/map';
@@ -13,21 +13,19 @@ export class BaseService<T, S> {
     apiUrl: string;
     epUrl: string;
 
-    constructor(public http: Http, private endpoint: string) {
+    constructor(public http: HttpClient, private endpoint: string) {
         this.apiUrl = 'http://api.swissrugbystats.ch/';
         // this.apiUrl = 'http://swissrugbystats-backend.herokuapp.com/';
         this.epUrl = `${this.apiUrl}${endpoint}`;
     }
 
     getOne(id: number): Observable<S> {
-          return this.http.get(`${this.epUrl}/${id}.json`)
-            .map((response: Response) => <S>response.json());
+          return this.http.get(`${this.epUrl}/${id}.json`);
     }
 
     getList(): Observable<T[]> {
       console.log(`get ${this.epUrl}`);
-      return this.http.get(`${this.epUrl}.json`)
-           .map((response: Response) => <T[]>response.json());
+      return this.http.get(`${this.epUrl}.json`);
     }
 
 }
