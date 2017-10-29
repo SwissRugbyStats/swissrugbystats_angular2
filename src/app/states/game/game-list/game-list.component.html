@@ -1,4 +1,7 @@
-<mat-table #table [dataSource]="dataSource">
+<mat-tab-group>
+  <mat-tab label="All Games">
+
+    <mat-table #table [dataSource]="dataSource">
 
   <!-- Date column -->
   <ng-container matColumnDef="date">
@@ -37,5 +40,10 @@
 </mat-table>
 
 
-<mat-progress-spinner mode="indeterminate" *ngIf="loading">
-</mat-progress-spinner>
+    <mat-progress-spinner mode="indeterminate" *ngIf="loading">
+    </mat-progress-spinner>
+
+
+  </mat-tab>
+  <mat-tab label="League ?">Content 2</mat-tab>
+</mat-tab-group>

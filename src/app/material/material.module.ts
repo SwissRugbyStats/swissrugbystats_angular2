@@ -8,7 +8,9 @@ import {
   MatSidenavModule,
   MatInputModule,
   MatFormFieldModule,
-  MatTableModule
+  MatTableModule,
+  MatTabsModule,
+  MatIconModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -25,7 +27,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSidenavModule,
     MatInputModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule,
+    MatIconModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -37,7 +41,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatSidenavModule,
     MatInputModule,
     MatFormFieldModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [],
 })
