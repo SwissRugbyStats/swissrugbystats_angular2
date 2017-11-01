@@ -14,6 +14,7 @@ import {ClubDetailComponent} from './states/club/club-detail/club-detail.compone
 import {ClubListComponent} from './states/club/club-list/club-list.component';
 import {CommonModule} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { AccountComponent } from './states/account/account.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HttpClientModule } from '@angular/common/http';
     GameDetailComponent,
     GameListComponent,
     ClubDetailComponent,
-    ClubListComponent
+    ClubListComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule,
