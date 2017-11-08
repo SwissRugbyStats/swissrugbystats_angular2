@@ -2,16 +2,22 @@
 <h1>
   {{team?.name}}
 </h1>
+{{team}}
 
-<h2 *ngIf="team.nextGame">Next Game</h2>
-<p>
-  {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team.nextGame.id }}">{{ team.nextGame.host.team.name }} vs {{ team.nextGame.guest.team.name }}</a>
-</p>
-<h2 *ngIf="team.lastGame">Last Game</h2>
-<p>
-  {{ team.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team.lastGame.id }}">{{ team.lastGame.host.team.name }} vs {{ team.lastGame.guest.team.name }}</a>
-  <span *ngIf="team.lastGame.host.score >= 0">- ({{ team.lastGame.host.score}} : {{ team.lastGame.guest.score }})</span>
-</p>
+<div *ngIf="team?.nextGame">
+  <h2>Next Game</h2>
+  <p>
+    {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.nextGame?.id }}">{{ team?.nextGame?.host.team.name }} vs {{ team?.nextGame?.guest.team.name }}</a>
+  </p>
+</div>
+<div *ngIf="team?.lastGame">
+  <h2>Last Game</h2>
+  <p>
+    {{ team?.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.lastGame.id }}">{{ team?.lastGame.host.team.name }} vs {{ team?.lastGame.guest.team.name }}</a>
+    <span *ngIf="team?.lastGame.host.score >= 0">- ({{ team?.lastGame.host.score}} : {{ team?.lastGame.guest.score }})</span>
+  </p>
+</div>
+
 
 <h2>Statistics</h2>
 <table *ngIf="team" class="team-statistics">
