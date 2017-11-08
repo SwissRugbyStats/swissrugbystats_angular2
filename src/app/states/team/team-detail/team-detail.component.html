@@ -3,12 +3,11 @@
   {{team?.name}}
 </h1>
 
-<h2>Next Game</h2>
+<h2 *ngIf="team.nextGame">Next Game</h2>
 <p>
   {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team.nextGame.id }}">{{ team.nextGame.host.team.name }} vs {{ team.nextGame.guest.team.name }}</a>
-  <span *ngIf="team.nextGame.host.score >= 0">- ({{ team.nextGame.host.score}} : {{ team.nextGame.guest.score }})</span>
 </p>
-<h2>Last Game</h2>
+<h2 *ngIf="team.lastGame">Last Game</h2>
 <p>
   {{ team.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team.lastGame.id }}">{{ team.lastGame.host.team.name }} vs {{ team.lastGame.guest.team.name }}</a>
   <span *ngIf="team.lastGame.host.score >= 0">- ({{ team.lastGame.host.score}} : {{ team.lastGame.guest.score }})</span>
