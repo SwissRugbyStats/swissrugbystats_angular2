@@ -1,39 +1,54 @@
 <img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}"/>
-<p>
+<h1>
   {{team?.name}}
+</h1>
+
+<h2>Next Game</h2>
+<p>
+  {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team.nextGame.id }}">{{ team.nextGame.host.team.name }} vs {{ team.nextGame.guest.team.name }}</a>
+  <span *ngIf="team.nextGame.host.score >= 0">- ({{ team.nextGame.host.score}} : {{ team.nextGame.guest.score }})</span>
+</p>
+<h2>Last Game</h2>
+<p>
+  {{ team.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team.lastGame.id }}">{{ team.lastGame.host.team.name }} vs {{ team.lastGame.guest.team.name }}</a>
+  <span *ngIf="team.lastGame.host.score >= 0">- ({{ team.lastGame.host.score}} : {{ team.lastGame.guest.score }})</span>
 </p>
 
-<table *ngIf="team">
+<h2>Statistics</h2>
+<table *ngIf="team" class="team-statistics">
+
   <tr>
-    <td>Spiel-Punkte gesamt</td>
-    <td>{{ team.point_count }}</td>
-  </tr>
-  <tr>
-    <td>Score gesamt</td>
-    <td>{{ team.score_count }}</td>
-  </tr>
-  <tr>
-    <td>Tries gesamt</td>
-    <td>{{ team.try_count }}</td>
-  </tr>
-  <tr>
-    <td>Karten gesamt</td>
-    <td>{{ team.card_count }}</td>
-  </tr>
-  <tr>
-    <td>Spiele gesamt</td>
-    <td>{{ team.game_count }}</td>
-  </tr>
-  <tr>
-    <td>Siege gesamt</td>
+    <td>Number of Wins</td>
     <td>{{ team.win_count }}</td>
   </tr>
   <tr>
-    <td>Niederlagen gesamt</td>
+    <td>Nubmer of Losses</td>
     <td>{{ team.loss_count }}</td>
   </tr>
-    <tr>
-    <td>Unentschieden gesamt</td>
+  <tr>
+    <td>Number of Draws</td>
     <td>{{ team.draw_count }}</td>
   </tr>
+
+  <tr>
+    <td>Game points total</td>
+    <td>{{ team.point_count }}</td>
+  </tr>
+  <tr>
+    <td>Score total</td>
+    <td>{{ team.score_count }}</td>
+  </tr>
+  <tr>
+    <td>Tries</td>
+    <td>{{ team.try_count }}</td>
+  </tr>
+  <tr>
+    <td>Cards collected</td>
+    <td>{{ team.card_count }}</td>
+  </tr>
+  <tr>
+    <td>Number of Games</td>
+    <td>{{ team.game_count }}</td>
+  </tr>
+
 </table>
