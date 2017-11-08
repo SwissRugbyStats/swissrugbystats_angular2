@@ -6,6 +6,7 @@ import {TeamListComponent} from './states/team/team-list/team-list.component';
 import {TeamDetailComponent} from './states/team/team-detail/team-detail.component';
 import {ClubListComponent} from './states/club/club-list/club-list.component';
 import {ClubDetailComponent} from './states/club/club-detail/club-detail.component';
+import { AccountComponent } from './states/account/account.component';
 
 const routes: Routes = [
   { path: 'games', component: GameListComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'team/:id', component: TeamDetailComponent},
   { path: 'clubs', component: ClubListComponent},
   { path: 'club/:id', component: ClubDetailComponent},
+  { path: 'account', component: AccountComponent},
   { path: '', component: TeamListComponent},
   { path: '**', component: TeamListComponent}
 ];

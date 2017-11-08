@@ -18,7 +18,7 @@
   <mat-sidenav #sidenav>
     <mat-list>
       <mat-list-item (click)="sidenav.close()">
-        <a mat-button routerLink="/account" routerLinkActive="active"><mat-icon>account circle</mat-icon> Log In / Sign Up</a>
+        <a mat-button routerLink="/account" routerLinkActive="active"><mat-icon>account-circle</mat-icon> Log In / Sign Up</a>
       </mat-list-item>
       <mat-list-item (click)="sidenav.close()">
         <a mat-button routerLink="/teams" routerLinkActive="active">Teams</a>
@@ -32,7 +32,9 @@
     </mat-list>
   </mat-sidenav>
 
-<router-outlet></router-outlet>
+  <main>
+    <router-outlet></router-outlet>
+  </main>
 
 </mat-sidenav-container>
 
