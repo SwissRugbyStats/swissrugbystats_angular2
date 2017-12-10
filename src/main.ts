@@ -1,4 +1,5 @@
 import './polyfills.ts';
+import 'chart.js';
 
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { enableProdMode } from '@angular/core';
@@ -10,8 +11,7 @@ if (environment.production) {
 }
 
 // check if https active, because that would cause trouble with the backend
-if (location.protocol != 'http:')
-{
+if (location.protocol !== 'http:') {
   location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
 }
 

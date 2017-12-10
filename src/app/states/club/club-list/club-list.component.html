@@ -2,6 +2,6 @@
 <p>If your club is not listed, it has not yet been set up in our database.</p>
 <mat-list>
   <mat-list-item *ngFor="let club of clubs; let i=index">
-    <a routerLink="/club/{{club.id}}" routerLinkActive="active">{{club.name}}</a>
+    <a routerLink="/clubs/{{club.id}}" routerLinkActive="active">{{club.name}}</a>
   </mat-list-item>
 </mat-list>
