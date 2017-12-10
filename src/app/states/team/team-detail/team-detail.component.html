@@ -1,64 +1,70 @@
-<img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
-<h1>
-  {{team?.name}}
-</h1>
 
-<div *ngIf="team?.nextGame">
-  <h2>Next Game</h2>
-  <p>
-    {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.nextGame?.id }}">{{ team?.nextGame?.host.team.name }} vs {{ team?.nextGame?.guest.team.name }}</a>
-  </p>
-</div>
-<div *ngIf="team?.lastGame">
-  <h2>Last Game</h2>
-  <p>
-    {{ team?.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.lastGame.id }}">{{ team?.lastGame.host.team.name }} vs {{ team?.lastGame.guest.team.name }}</a>
-    <span *ngIf="team?.lastGame.host.score >= 0">- ({{ team?.lastGame.host.score}} : {{ team?.lastGame.guest.score }})</span>
-  </p>
-</div>
+  <h1>
+    {{team?.name}}
+  </h1>
+  <img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
+
+  <h3>Games</h3>
+  <table *ngIf="team" class="team-statistics">
+    <tr>
+      <td>Number of Games</td>
+      <td>{{ team.game_count }}</td>
+    </tr>
+    <tr>
+      <td>Number of Wins</td>
+      <td>{{ team.win_count }}</td>
+    </tr>
+    <tr>
+      <td>Nubmer of Losses</td>
+      <td>{{ team.loss_count }}</td>
+    </tr>
+    <tr>
+      <td>Number of Draws</td>
+      <td>{{ team.draw_count }}</td>
+    </tr>
+  </table>
+
+  <div>
+    <canvas id="myChart" width="400" height="400" style="max-width: 500px"></canvas>
+  </div>
 
 
-<h2>Statistics</h2>
-<h3>Games</h3>
-<table *ngIf="team" class="team-statistics">
-  <tr>
-    <td>Number of Games</td>
-    <td>{{ team.game_count }}</td>
-  </tr>
-  <tr>
-    <td>Number of Wins</td>
-    <td>{{ team.win_count }}</td>
-  </tr>
-  <tr>
-    <td>Nubmer of Losses</td>
-    <td>{{ team.loss_count }}</td>
-  </tr>
-  <tr>
-    <td>Number of Draws</td>
-    <td>{{ team.draw_count }}</td>
-  </tr>
-</table>
 
-<div>
-  <canvas id="myChart" width="400" height="400"></canvas>
-</div>
 
-<h3>Points</h3>
-<table *ngIf="team" class="team-statistics">
-  <tr>
-    <td>Game points total</td>
-    <td>{{ team.point_count }}</td>
-  </tr>
-  <tr>
-    <td>Score total</td>
-    <td>{{ team.score_count }}</td>
-  </tr>
-  <tr>
-    <td>Tries</td>
-    <td>{{ team.try_count }}</td>
-  </tr>
-  <tr>
-    <td>Cards collected</td>
-    <td>{{ team.card_count }}</td>
-  </tr>
-</table>
+  <div *ngIf="team?.nextGame">
+    <h2>Next Game</h2>
+    <p>
+      {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.nextGame?.id }}">{{ team?.nextGame?.host.team.name }} vs {{ team?.nextGame?.guest.team.name }}</a>
+    </p>
+  </div>
+  <div *ngIf="team?.lastGame">
+    <h2>Last Game</h2>
+    <p>
+      {{ team?.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.lastGame.id }}">{{ team?.lastGame.host.team.name }} vs {{ team?.lastGame.guest.team.name }}</a>
+      <span *ngIf="team?.lastGame.host.score >= 0">- ({{ team?.lastGame.host.score}} : {{ team?.lastGame.guest.score }})</span>
+    </p>
+  </div>
+
+
+  <h2>Statistics</h2>
+
+  <h3>Points</h3>
+  <table *ngIf="team" class="team-statistics">
+    <tr>
+      <td>Game points total</td>
+      <td>{{ team.point_count }}</td>
+    </tr>
+    <tr>
+      <td>Score total</td>
+      <td>{{ team.score_count }}</td>
+    </tr>
+    <tr>
+      <td>Tries</td>
+      <td>{{ team.try_count }}</td>
+    </tr>
+    <tr>
+      <td>Cards collected</td>
+      <td>{{ team.card_count }}</td>
+    </tr>
+  </table>
+  <mat-grid-list cols="2">
