@@ -10,7 +10,8 @@
     "build": "ng build",
     "e2e": "ng e2e",
     "start": "node server.js",
-    "postinstall": "ng build --aot --prod"
+    "postinstall": "ng build --aot --prod",
+    "deploy": "git push origin && git push heroku"
   },
   "private": true,
   "dependencies": {
