@@ -10,11 +10,11 @@ import { AccountComponent } from './states/account/account.component';
 
 const routes: Routes = [
   { path: 'games', component: GameListComponent },
-  { path: 'game/:id', component: GameDetailComponent },
+  { path: 'games/:id', component: GameDetailComponent },
   { path: 'teams', component: TeamListComponent},
-  { path: 'team/:id', component: TeamDetailComponent},
+  { path: 'teams/:id', component: TeamDetailComponent},
   { path: 'clubs', component: ClubListComponent},
-  { path: 'club/:id', component: ClubDetailComponent},
+  { path: 'clubs/:id', component: ClubDetailComponent},
   { path: 'account', component: AccountComponent},
   { path: '', component: TeamListComponent},
   { path: '**', component: TeamListComponent}

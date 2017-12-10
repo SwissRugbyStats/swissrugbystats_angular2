@@ -30,7 +30,7 @@
   <!-- Result column -->
   <ng-container matColumnDef="details">
     <mat-header-cell *matHeaderCellDef>Show Details</mat-header-cell>
-    <mat-cell *matCellDef="let game"><a mat-button routerLink="/game/{{game.id}}">Details</a></mat-cell>
+    <mat-cell *matCellDef="let game"><a mat-button routerLink="/games/{{game.id}}">Details</a></mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="['date', 'hostTeam', 'guestTeam', 'result', 'details']"></mat-header-row>
