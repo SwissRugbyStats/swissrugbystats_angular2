@@ -5,15 +5,15 @@
 
 <mat-list>
   <mat-list-item *ngFor="let team of teams; let i=index">
-    <!--<a routerLink="/team/{{team.id}}" routerLinkActive="active">{{team.name}}</a>-->
-    <mat-card >
+    <a routerLink="/teams/{{team.id}}" routerLinkActive="active">{{team.name}}</a>
+    <!--<mat-card >
       <mat-card-header>
-        <!--<div mat-card-avatar style="background: url('{{ team.fsr_logo }}')"></div>-->
+        <div mat-card-avatar style="background: url('{{ team.fsr_logo }}')"></div>
         <mat-card-title>
           <a routerLink="/teams/{{team.id}}" routerLinkActive="active">{{team.name}}</a>
         </mat-card-title>
       </mat-card-header>
-    </mat-card>
+    </mat-card>-->
   </mat-list-item>
 </mat-list>
 

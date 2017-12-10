@@ -54,6 +54,9 @@ export class TeamDetailComponent implements OnInit {
                 }
               ]
             },
+            options: {
+              responsive: true
+            },
             labels: labels
         });
 
