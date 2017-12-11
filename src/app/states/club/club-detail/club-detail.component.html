@@ -1,7 +1,11 @@
-<h1>{{club?.name}}</h1>
-<img src="{{club?.logo}}" title="{{club?.name}}" alt="{{club?.name}}"/>
-<p *ngIf="club.website">
-  <a href="club.website" target="_blank">{{club.website}}</a>
-</p>
+<mat-toolbar color="accent" class="content-header">
+    <img src="{{club?.logo}}" title="{{club?.name}}" alt="{{club?.name}}"/>
+  <div>
+     <h1>{{club?.name}}</h1>
+    <div><a href="club.website" target="_blank">{{club.website}}</a></div>
+  </div>
+
+</mat-toolbar>
+
 
 <h2>Teams</h2>

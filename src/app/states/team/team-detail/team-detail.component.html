@@ -1,10 +1,12 @@
- <h1>
-    {{team?.name}}
-  </h1>
-  <img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
+<mat-toolbar color="accent" class="content-header">
+    <img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
+    <h1>
+      {{team?.name}}
+    </h1>
+</mat-toolbar>
 
 
- <mat-grid-list cols="2">
+ <mat-grid-list cols="3">
 
    <mat-grid-tile>
 
