@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SRSGamesComponent } from './srs-games/srs-games.component';
-import { MatProgressSpinnerModule, MatTableModule } from '@angular/material';
+import { MatButtonModule, MatProgressSpinnerModule, MatTableModule } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -9,7 +9,8 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     CommonModule,
     MatTableModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatButtonModule
   ],
   declarations: [
     SRSGamesComponent

@@ -16,7 +16,7 @@ import { Game } from '../../game/game';
 export class TeamDetailComponent implements OnInit {
 
   team: TeamDetail;
-  games: Observable<Array<Game>>;
+  games: Observable<any>;
 
   constructor( private route: ActivatedRoute,
               private router: Router,

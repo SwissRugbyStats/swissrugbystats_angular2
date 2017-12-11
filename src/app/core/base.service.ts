@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class BaseService<T, S> {
+export class BaseService<ListType, DetailType> {
 
     apiUrl: string;
     epUrl: string;
@@ -19,13 +19,13 @@ export class BaseService<T, S> {
         this.epUrl = `${this.apiUrl}${endpoint}`;
     }
 
-    getOne(id: number): Observable<S> {
-          return this.http.get(`${this.epUrl}/${id}.json`);
+    getOne(id: number): Observable<DetailType> {
+          return this.http.get<DetailType>(`${this.epUrl}/${id}.json`);
     }
 
-    getList(): Observable<T[]> {
+    getList(): Observable<Array<ListType>> {
       console.log(`get ${this.epUrl}`);
-      return this.http.get(`${this.epUrl}.json`);
+      return this.http.get<Array<ListType>>(`${this.epUrl}.json`);
     }
 
 }

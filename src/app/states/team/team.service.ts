@@ -3,6 +3,7 @@ import {BaseService} from '../../core/base.service';
 import { HttpClient } from '@angular/common/http';
 import { Team } from './team';
 import {TeamDetail} from './team-detail';
+import { Game } from '../game/game';
 
 @Injectable()
 export class TeamService extends BaseService<Team, TeamDetail> {
@@ -14,7 +15,7 @@ export class TeamService extends BaseService<Team, TeamDetail> {
   getGames(teamId: number) {
     let url = `http://api.swissrugbystats.ch/teams/${teamId}/games`;
     console.log(`get ${url}`);
-    return this.http.get(`${url}.json`);
+    return this.http.get<Array<Game>>(`${url}.json`);
   }
 
 
