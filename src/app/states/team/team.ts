@@ -11,6 +11,7 @@ export class Team {
   try_count: number;
   game_count: number;
   win_count: number;
+  card_count: number;
   draw_count: number;
   loss_count: number;
 }

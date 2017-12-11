@@ -1,9 +1,9 @@
 <mat-toolbar color="accent" class="content-header">
-    <img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" id="team-logo">
+    <img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" class="team-logo">
     <h1 class="page-header"><a routerLink="/teams/{{game?.host?.team.id}}">{{game?.host?.team.name}}</a></h1>
     <h1 class="page-header">&nbsp;vs&nbsp;</h1>
     <h1 class="page-header"><a routerLink="/teams/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}</a></h1>
-    <img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" id="team-logo">
+    <img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" class="team-logo">
 </mat-toolbar>
 
 

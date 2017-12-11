@@ -1,12 +1,11 @@
 <mat-toolbar color="accent" class="content-header">
-    <img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
     <h1>
-      {{team?.name}}
+      {{league?.name}}
     </h1>
 </mat-toolbar>
 
 
-<div fxLayout="row" fxLayoutWrap fxLayoutAlign="start stretch">
+<!--<div fxLayout="row" fxLayoutWrap fxLayoutAlign="start stretch">
 
   <div fxFlex="auto">
     <mat-card>
@@ -22,22 +21,22 @@
           <canvas id="myChart" width="400" height="400" style="max-width: 500px"></canvas>
         </div>
 
-        <table *ngIf="team" class="team-statistics">
+        <table *ngIf="league" class="team-statistics">
           <tr>
             <td>Number of Games</td>
-            <td>{{ team.game_count }}</td>
+            <td>{{ league.game_count }}</td>
           </tr>
           <tr>
             <td>Number of Wins</td>
-            <td>{{ team.win_count }}</td>
+            <td>{{ league.win_count }}</td>
           </tr>
           <tr>
             <td>Nubmer of Losses</td>
-            <td>{{ team.loss_count }}</td>
+            <td>{{ league.loss_count }}</td>
           </tr>
           <tr>
             <td>Number of Draws</td>
-            <td>{{ team.draw_count }}</td>
+            <td>{{ league.draw_count }}</td>
           </tr>
         </table>
 
@@ -61,22 +60,22 @@
           <canvas id="myChart2" width="400" height="400" style="max-width: 500px"></canvas>
         </div>
 
-        <table *ngIf="team" class="team-statistics">
+        <table *ngIf="league" class="team-statistics">
           <tr>
             <td>League Points</td>
-            <td>{{ team.point_count }}</td>
+            <td>{{ league.point_count }}</td>
           </tr>
           <tr>
             <td>Score Points</td>
-            <td>{{ team.score_count }}</td>
+            <td>{{ league.score_count }}</td>
           </tr>
           <tr>
             <td>Try Count</td>
-            <td>{{ team.try_count }}</td>
+            <td>{{ league.try_count }}</td>
           </tr>
           <tr>
             <td>Red Cards</td>
-            <td>{{ team.card_count }}</td>
+            <td>{{ league.card_count }}</td>
           </tr>
         </table>
 
@@ -96,9 +95,10 @@
 
       <mat-card-content>
 
-        <div *ngIf="team?.nextGame">
+        <div *ngIf="league?.nextGame">
           <p>
-            {{ team.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.nextGame?.id }}">{{ team?.nextGame?.host.team.name }} vs {{ team?.nextGame?.guest.team.name }}</a>
+            {{ league.nextGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ league?.nextGame?.id }}">{{
+            league?.nextGame?.host.team.name }} vs {{ league?.nextGame?.guest.team.name }}</a>
           </p>
         </div>
 
@@ -118,10 +118,11 @@
 
       <mat-card-content>
 
-        <div *ngIf="team?.lastGame">
+        <div *ngIf="league?.lastGame">
           <p>
-            {{ team?.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ team?.lastGame.id }}">{{ team?.lastGame.host.team.name }} vs {{ team?.lastGame.guest.team.name }}</a>
-            <span *ngIf="team?.lastGame.host.score >= 0">- ({{ team?.lastGame.host.score}} : {{ team?.lastGame.guest.score }})</span>
+            {{ league?.lastGame.date | date:'dd.MM.yyyy' }} - <a routerLink="/games/{{ league?.lastGame.id }}">{{
+            league?.lastGame.host.team.name }} vs {{ league?.lastGame.guest.team.name }}</a>
+            <span *ngIf="league?.lastGame.host.score >= 0">- ({{ league?.lastGame.host.score}} : {{ league?.lastGame.guest.score }})</span>
           </p>
         </div>
 
@@ -130,4 +131,4 @@
 
     </mat-card>
   </div>
-</div>
+</div>-->

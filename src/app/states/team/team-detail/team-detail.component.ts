@@ -34,14 +34,14 @@ export class TeamDetailComponent implements OnInit {
           {
             'data': data,
             backgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56"
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56'
             ],
             hoverBackgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56"
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56'
             ]
           }
         ]
@@ -56,33 +56,32 @@ export class TeamDetailComponent implements OnInit {
   drawPointChart() {
     // Any of the following formats may be used
     let ctx = document.getElementById('myChart2');
-    let labels = ['wins', 'losses', 'draws'];
-    let data = [this.team.win_count, this.team.loss_count, this.team.draw_count];
+    let labels = ['League Points', 'Score Points', 'Try Points', 'Red Cards'];
+    let data = [this.team.point_count, this.team.score_count, this.team.try_count, this.team.card_count];
 
-    let myDoughnutChart = new Chart(ctx, {
-      type: 'doughnut',
+    let myBarChart = new Chart(ctx, {
+      type: 'bar',
       data: {
         labels: labels,
         datasets: [
           {
             'data': data,
             backgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56"
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56'
             ],
             hoverBackgroundColor: [
-              "#FF6384",
-              "#36A2EB",
-              "#FFCE56"
+              '#FF6384',
+              '#36A2EB',
+              '#FFCE56'
             ]
           }
         ]
       },
       options: {
         responsive: true
-      },
-      labels: labels
+      }
     });
   }
 
