@@ -10,7 +10,7 @@ import {
   MatFormFieldModule,
   MatTableModule,
   MatTabsModule,
-  MatIconModule
+  MatIconModule, MatCardModule, MatGridListModule
 } from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -29,7 +29,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatTableModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule
   ],
   exports: [
     BrowserAnimationsModule,
@@ -43,7 +45,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatFormFieldModule,
     MatTableModule,
     MatTabsModule,
-    MatIconModule
+    MatIconModule,
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
 })

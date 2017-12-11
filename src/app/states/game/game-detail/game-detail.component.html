@@ -1,18 +1,30 @@
+<mat-toolbar color="accent" class="content-header">
+    <img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" id="team-logo">
+    <h1 class="page-header"><a routerLink="/teams/{{game?.host?.team.id}}">{{game?.host?.team.name}}</a></h1>
+    <h1 class="page-header">&nbsp;vs&nbsp;</h1>
+    <h1 class="page-header"><a routerLink="/teams/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}</a></h1>
+    <img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" id="team-logo">
+</mat-toolbar>
+
+
 <table class="table">
-    <thead>
+  <!--
+  <thead>
         <tr>
-            <th><h1 class="page-header"><a routerLink="/team/{{game?.host?.team.id}}">{{game?.host?.team.name}}</a></h1></th>
+            <th><h1 class="page-header"><a routerLink="/teams/{{game?.host?.team.id}}">{{game?.host?.team.name}}</a></h1></th>
             <th><h1 class="page-header">versus</h1></th>
-            <th><h1 class="page-header"><a routerLink="/team/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}</a></h1></th>
+            <th><h1 class="page-header"><a routerLink="/teams/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}</a></h1></th>
         </tr>
     </thead>
+    -->
     <tbody>
+    <!--
         <tr>
             <td><img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" id="team-logo"></td>
             <td><h1 id="result" *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">{{game?.host?.score}} : {{game?.guest?.score}}</h1></td>
             <td><img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" id="team-logo"></td>
         </tr>
-
+-->
         <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
             <th>Kickoff</th>
             <td colspan="2">{{game?.date | date:"dd.MM.yyyy',' HH:mm"}}</td>
@@ -20,7 +32,7 @@
 
         <tr *ngIf="game?.venue">
             <th>Venue</th>
-            <td colspan="2"><a href="#/venues/{{game?.venue?.id}}">{{game?.venue?.name}}</a></td>
+            <td colspan="2"><a href="/venues/{{game?.venue?.id}}">{{game?.venue?.name}}</a></td>
         </tr>
 
         <tr *ngIf="game?.referee?.name">
