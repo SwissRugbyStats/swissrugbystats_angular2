@@ -11,6 +11,12 @@ export class TeamService extends BaseService<Team, TeamDetail> {
     super(http, 'teams');
   }
 
+  getGames(teamId: number) {
+    let url = `http://api.swissrugbystats.ch/teams/${teamId}/games`;
+    console.log(`get ${url}`);
+    return this.http.get(`${url}.json`);
+  }
+
 
 
 }

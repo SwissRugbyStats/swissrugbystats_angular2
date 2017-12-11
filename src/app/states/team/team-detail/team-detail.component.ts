@@ -3,16 +3,20 @@ import {TeamService} from '../team.service';
 import {TeamDetail} from '../team-detail';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Chart } from 'chart.js';
+import { GameService } from '../../game/game.service';
+import { Observable } from 'rxjs/Observable';
+import { Game } from '../../game/game';
 
 @Component({
   selector: 'app-team-detail',
   templateUrl: './team-detail.component.html',
   styleUrls: ['./team-detail.component.css'],
-  providers: [TeamService]
+  providers: [TeamService, GameService]
 })
 export class TeamDetailComponent implements OnInit {
 
   team: TeamDetail;
+  games: Observable<Array<Game>>;
 
   constructor( private route: ActivatedRoute,
               private router: Router,
@@ -94,11 +98,13 @@ export class TeamDetailComponent implements OnInit {
   ngOnInit() {
      this.route.params.forEach((params: Params) => {
        let id = +params['id']; // (+) converts string 'id' to a number
+
+       this.games = this.teamservice.getGames(id);
+
        console.log(id);
        this.teamservice.getOne(id).subscribe((t => {
           console.log(t);
           this.team = t;
-
           this.drawCharts();
        }));
    });

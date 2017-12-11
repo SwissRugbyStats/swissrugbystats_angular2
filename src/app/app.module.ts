@@ -18,6 +18,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { LandingComponent } from './states/landing/landing.component';
 import { LeagueDetailComponent } from './states/league/league-detail/league-detail.component';
 import { LeagueListComponent } from './states/league/league-list/league-list.component';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LeagueListComponent } from './states/league/league-list/league-list.com
     CommonModule,
     MaterialModule,
     FlexLayoutModule,
-    ChSwissrugbystatsAngular2RoutingModule
+    ChSwissrugbystatsAngular2RoutingModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

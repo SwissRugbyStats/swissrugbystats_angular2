@@ -10,6 +10,7 @@
   <mat-tab label="Statistics">
     <div fxLayout="row" fxLayoutWrap fxLayoutAlign="start stretch">
 
+      <!-- Statistics : Games -->
       <div fxFlex="auto">
         <mat-card>
 
@@ -49,6 +50,7 @@
         </mat-card>
       </div>
 
+      <!-- Statistics : Points -->
       <div fxFlex="auto">
         <mat-card>
 
@@ -88,6 +90,7 @@
         </mat-card>
       </div>
 
+      <!-- Games : Next -->
       <div fxFlex="auto">
         <mat-card>
 
@@ -114,6 +117,7 @@
         </mat-card>
       </div>
 
+      <!-- Games : Last -->
       <div fxFlex="auto">
         <mat-card>
 
@@ -142,7 +146,11 @@
     </div>
   </mat-tab>
 
-  <mat-tab label="Games"></mat-tab>
+  <mat-tab label="Games">
+    <srs-games [games]="games">
+
+    </srs-games>
+  </mat-tab>
   <mat-tab label="Players"></mat-tab>
   <mat-tab label="For your Website">
     <h2>Integrate Swiss Rugby Stats into your own Website</h2>
