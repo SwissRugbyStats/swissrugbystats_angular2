@@ -1,7 +1,8 @@
-
-<mat-form-field class="example-full-width">
-  <input matInput placeholder="Filter" [(ngModel)]="filter">
-</mat-form-field>
+<div>
+  <mat-form-field class="example-full-width">
+    <input autofocus matInput placeholder="Filter" [(ngModel)]="filter">
+  </mat-form-field>
+</div>
 
 <mat-list>
   <mat-list-item *ngFor="let team of teams; let i=index">

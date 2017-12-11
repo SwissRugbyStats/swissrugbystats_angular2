@@ -20,6 +20,78 @@ export class TeamDetailComponent implements OnInit {
                 this.team = new TeamDetail;
   }
 
+  drawGameChart() {
+    // Any of the following formats may be used
+    let ctx = document.getElementById('myChart');
+    let labels = ['wins', 'losses', 'draws'];
+    let data = [this.team.win_count, this.team.loss_count, this.team.draw_count];
+
+    let myDoughnutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            'data': data,
+            backgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56"
+            ]
+          }
+        ]
+      },
+      options: {
+        responsive: true
+      },
+      labels: labels
+    });
+  }
+
+  drawPointChart() {
+    // Any of the following formats may be used
+    let ctx = document.getElementById('myChart2');
+    let labels = ['wins', 'losses', 'draws'];
+    let data = [this.team.win_count, this.team.loss_count, this.team.draw_count];
+
+    let myDoughnutChart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            'data': data,
+            backgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56"
+            ],
+            hoverBackgroundColor: [
+              "#FF6384",
+              "#36A2EB",
+              "#FFCE56"
+            ]
+          }
+        ]
+      },
+      options: {
+        responsive: true
+      },
+      labels: labels
+    });
+  }
+
+  drawCharts() {
+    // setup charts
+    this.drawGameChart();
+    this.drawPointChart();
+  }
+
   ngOnInit() {
      this.route.params.forEach((params: Params) => {
        let id = +params['id']; // (+) converts string 'id' to a number
@@ -28,38 +100,7 @@ export class TeamDetailComponent implements OnInit {
           console.log(t);
           this.team = t;
 
-          // setup charts
-          // Any of the following formats may be used
-          let ctx = document.getElementById('myChart');
-          let labels = ['wins', 'losses', 'draws'];
-          let data = [this.team.win_count, this.team.loss_count, this.team.draw_count];
-
-          let myDoughnutChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-              labels: labels,
-              datasets: [
-                {
-                  'data': data,
-                  backgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                  ],
-                  hoverBackgroundColor: [
-                    "#FF6384",
-                    "#36A2EB",
-                    "#FFCE56"
-                  ]
-                }
-              ]
-            },
-            options: {
-              responsive: true
-            },
-            labels: labels
-        });
-
+          this.drawCharts();
        }));
    });
 

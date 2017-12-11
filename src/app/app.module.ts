@@ -15,6 +15,7 @@ import {ClubListComponent} from './states/club/club-list/club-list.component';
 import {CommonModule} from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { AccountComponent } from './states/account/account.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AccountComponent } from './states/account/account.component';
     GameListComponent,
     ClubDetailComponent,
     ClubListComponent,
-    AccountComponent
+    AccountComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,6 +34,7 @@ import { AccountComponent } from './states/account/account.component';
     HttpClientModule,
     CommonModule,
     MaterialModule,
+    FlexLayoutModule,
     ChSwissrugbystatsAngular2RoutingModule
   ],
   providers: [],

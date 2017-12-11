@@ -32,7 +32,7 @@
 
         <tr *ngIf="game?.venue">
             <th>Venue</th>
-            <td colspan="2"><a href="/venues/{{game?.venue?.id}}">{{game?.venue?.name}}</a></td>
+            <td colspan="2"><a routerLink="/venues/{{game?.venue?.id}}">{{game?.venue?.name}}</a></td>
         </tr>
 
         <tr *ngIf="game?.referee?.name">
@@ -59,3 +59,5 @@
         </tr>
     </tbody>
 </table>
+
+<a href="{{game.fsrUrl}}">View Game on suisserugby.com</a>
