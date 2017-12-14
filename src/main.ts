@@ -15,4 +15,5 @@ if (location.protocol !== 'http:') {
   location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+platformBrowserDynamic().bootstrapModule(AppModule)
+  .catch(err => console.log(err));
