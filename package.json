@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "build": "ng build",
     "e2e": "ng e2e",
+    "heroku-postbuild": "ng build --prod",
     "start": "node server.js",
     "deploy": "git push origin && git push heroku"
   },
