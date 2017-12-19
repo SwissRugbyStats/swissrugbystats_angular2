@@ -10,6 +10,7 @@ import { AccountComponent } from './states/account/account.component';
 import { LandingComponent } from './states/landing/landing.component';
 import { LeagueListComponent } from './states/league/league-list/league-list.component';
 import { LeagueDetailComponent } from './states/league/league-detail/league-detail.component';
+import { MapComponent } from './states/map/map.component';
 
 const routes: Routes = [
   { path: 'games', component: GameListComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'clubs/:id', component: ClubDetailComponent },
   { path: 'leagues', component: LeagueListComponent },
   { path: 'leagues/:id', component: LeagueDetailComponent },
+  { path: 'map', component: MapComponent },
   { path: 'account', component: AccountComponent },
   { path: '', component: LandingComponent },
   { path: '**', component: LandingComponent }

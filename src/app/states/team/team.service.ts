@@ -13,7 +13,7 @@ export class TeamService extends BaseService<Team, TeamDetail> {
   }
 
   getGames(teamId: number) {
-    let url = `http://api.swissrugbystats.ch/teams/${teamId}/games`;
+    let url = `http://api3.swissrugbystats.ch/teams/${teamId}/games`;
     console.log(`get ${url}`);
     return this.http.get<Array<Game>>(`${url}.json`);
   }

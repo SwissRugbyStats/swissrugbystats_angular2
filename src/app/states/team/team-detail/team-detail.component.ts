@@ -38,14 +38,14 @@ export class TeamDetailComponent implements OnInit {
           {
             'data': data,
             backgroundColor: [
-              '#FF6384',
-              '#36A2EB',
-              '#FFCE56'
+              '#388E3C',
+              '#D32F2F',
+              '#FFA000'
             ],
             hoverBackgroundColor: [
-              '#FF6384',
-              '#36A2EB',
-              '#FFCE56'
+              '#388E3C',
+              '#D32F2F',
+              '#FFA000'
             ]
           }
         ]
@@ -97,12 +97,12 @@ export class TeamDetailComponent implements OnInit {
 
   ngOnInit() {
      this.route.params.forEach((params: Params) => {
-       let id = +params['id']; // (+) converts string 'id' to a number
+       let teamId = +params['id']; // (+) converts string 'id' to a number
 
-       this.games = this.teamservice.getGames(id);
+       this.games = this.teamservice.getGames(teamId);
 
-       console.log(id);
-       this.teamservice.getOne(id).subscribe((t => {
+       console.log('Get games by team ', teamId);
+       this.teamservice.getOne(teamId).subscribe((t => {
           console.log(t);
           this.team = t;
           this.drawCharts();

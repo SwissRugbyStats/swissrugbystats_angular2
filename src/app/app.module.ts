@@ -19,6 +19,7 @@ import { LandingComponent } from './states/landing/landing.component';
 import { LeagueDetailComponent } from './states/league/league-detail/league-detail.component';
 import { LeagueListComponent } from './states/league/league-list/league-list.component';
 import { SharedModule } from './shared/shared.module';
+import { MapComponent } from './states/map/map.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SharedModule } from './shared/shared.module';
     AccountComponent,
     LeagueDetailComponent,
     LeagueListComponent,
-    LandingComponent
+    LandingComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule,

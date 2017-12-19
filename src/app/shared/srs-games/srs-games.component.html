@@ -1,3 +1,11 @@
+
+<!--<div class="filter-container mat-elevation-z8">
+  <div class="filter-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>-->
+
 <mat-table #table [dataSource]="dataSource" matSort>
 
   <!-- Date column -->
@@ -9,13 +17,13 @@
   <!-- Host team column -->
   <ng-container matColumnDef="hostTeam">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Host</mat-header-cell>
-    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.host.team.id}}">{{game.host.team.name}}</a></mat-cell>
+    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.host.team.id}}"><img *ngIf="game.host.team.logo" src="{{game.host.team.logo}}"> {{game.host.team.name}}</a></mat-cell>
   </ng-container>
 
   <!-- Guest team column -->
   <ng-container matColumnDef="guestTeam">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Guest</mat-header-cell>
-    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.guest.team.id}}">{{game.guest.team.name}}</a></mat-cell>
+    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.guest.team.id}}"><img *ngIf="game.guest.team.logo" src="{{game.guest.team.logo}}"> {{game.guest.team.name}}</a></mat-cell>
   </ng-container>
 
   <!-- Result column -->

@@ -1,5 +1,5 @@
 <mat-toolbar color="accent" class="content-header">
-    <img src="{{club?.logo}}" title="{{club?.name}}" alt="{{club?.name}}"/>
+    <img *ngIf="club?.logo" src="{{club?.logo}}" title="{{club?.name}}" alt="{{club?.name}}"/>
   <div>
      <h1>{{club?.name}}</h1>
     <div><a href="{{club.website}}" target="_blank">{{club.website}}</a></div>
@@ -9,3 +9,11 @@
 
 
 <h2>Teams</h2>
+
+<mat-list>
+  <mat-list-item *ngFor="let team of teams;">
+    <img src="{{ team?.logo }}" class="team-list-logo">
+    <a routerLink="/teams/{{team.id}}" routerLinkActive="active">{{team?.name}}</a>
+
+  </mat-list-item>
+</mat-list>

@@ -1,8 +1,13 @@
 <mat-toolbar color="accent" class="content-header">
-    <img src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
+    <img *ngIf="team?.logo" src="{{team?.logo}}" title="{{team?.name}}" alt="{{team?.name}}" class="team-logo"/>
+  <div>
     <h1>
       {{team?.name}}
     </h1>
+    <div>Club: </div>
+    <div>Current League: </div>
+    <div>Previous Leagues: </div>
+  </div>
 </mat-toolbar>
 
 <mat-tab-group>
@@ -103,7 +108,7 @@
 
             <div class="srs-last_game" data-teamid="5">
               <div>
-                <img src="{{team?.nextGame?.host.team.logo}}" style="max-height: 50px;"> - <img src="{{team?.nextGame?.guest.team.logo}}" style="max-height: 50px;">
+                <img src="{{team?.nextGame?.host.team.logo}}" style="max-height: 50px;">{{ team?.nextGame?.host.score }} - {{ team?.nextGame?.guest.score }}<img src="{{team?.nextGame?.guest.team.logo}}" style="max-height: 50px;">
               </div>
               <div class="srs-last_game srs-teamRow">
                 <a routerLink="/games/{{ team?.nextGame?.id }}">{{ team?.nextGame?.host.team.name }} vs {{ team?.nextGame?.guest.team.name }}</a>

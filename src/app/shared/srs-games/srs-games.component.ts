@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Component({
   selector: 'srs-games',
   templateUrl: './srs-games.component.html',
-  styleUrls: ['./srs-games.component.css'],
+  styleUrls: ['./srs-games.component.scss'],
   providers: []
 })
 export class SRSGamesComponent implements OnInit, AfterViewInit {
@@ -21,6 +21,13 @@ export class SRSGamesComponent implements OnInit, AfterViewInit {
   @Input() games: Observable<any>;
 
   constructor() {  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    console.log('Filter by', filterValue);
+    this.dataSource.filter = filterValue;
+  }
 
   ngOnInit() {
     // let b = BehaviorSubject.from(this.games);

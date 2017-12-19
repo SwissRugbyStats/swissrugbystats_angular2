@@ -1,0 +1,30 @@
+.mat-column-guestTeam img,
+.mat-column-hostTeam img{
+  width: 100%;
+  max-width: 130px;
+  height: auto;
+}
+
+
+mat-table {
+mat-row:nth-child(2n) {
+  background-color: #f9f9f9;
+}
+}
+
+/* Structure */
+.filter-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+.filter-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
