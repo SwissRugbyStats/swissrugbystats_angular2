@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/cor
 import { Observable } from 'rxjs/Rx';
 import { Game } from '../../states/game/game';
 import { MatSort, MatTableDataSource } from '@angular/material';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
 
 @Component({
   selector: 'srs-games',

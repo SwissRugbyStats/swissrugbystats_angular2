@@ -1,5 +1,5 @@
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from "@angular/common/http";
-import {Observable} from "rxjs/observable";
+import {Observable} from "rxjs/Rx";
 import {Injectable} from "@angular/core";
 import {AUTH_TOKEN_KEY} from "../authentication.service";
 
