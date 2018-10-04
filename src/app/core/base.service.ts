@@ -16,7 +16,7 @@ export abstract class BaseService<ListType, DetailType> {
   }
 
   getEndpointUrl(): string {
-    return `${this.apiUrl}${this.endpointUrl}`;
+    return `${this.apiUrl}/${this.endpointUrl}`;
   }
 
   getOne(id: number): Observable<DetailType> {
