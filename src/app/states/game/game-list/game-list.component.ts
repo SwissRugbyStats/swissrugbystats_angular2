@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Game} from "../game";
 import {GameService} from "../game.service";
 import {DataSource} from "@angular/cdk/collections";
-import {Observable} from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
+import {Observable} from 'rxjs/observable';
 
 @Component({
   selector: 'app-game-list',

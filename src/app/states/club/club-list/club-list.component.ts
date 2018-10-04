@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Club} from '../club';
 import {ClubService} from '../club.service';
 
@@ -12,13 +12,13 @@ export class ClubListComponent implements OnInit {
 
   clubs: Array<Club> = [];
 
-  constructor(clubService: ClubService) {
-    clubService.getList().subscribe((t => {
-      this.clubs = t;
-    }));
+  constructor(private clubService: ClubService) {
   }
 
   ngOnInit() {
+    this.clubService.getList().subscribe((t => {
+      this.clubs = t;
+    }));
   }
 
 }

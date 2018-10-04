@@ -69,7 +69,8 @@ export class AccountComponent implements OnInit {
       // check if social token in url
       if (fragment && fragment.startsWith('access_token')) {
         // extract social token
-        const fbToken = fragment.split('&')[0].split('=')[1]
+        const fbToken = fragment.split('&')[0].split('=')[1];
+        console.log('attempt facebook login', fbToken)
         this.authenticationService.loginFacebook(fbToken);
       }
       this.token = fragment;

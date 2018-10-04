@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Chart } from 'chart.js';
 import { LeagueService } from '../league.service';
 import { League } from '../league';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs/observable';
 
 @Component({
   selector: 'app-team-detail',

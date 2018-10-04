@@ -32,14 +32,14 @@
         <input autofocus matInput placeholder="Password" [(ngModel)]="password" type="password" name="password">
       </mat-form-field>
 
-      <button type="submit" (click)="restAuthLogin()" mat-raised-button>Login RestAuth</button>
+      <button type="submit" (click)="restAuthLogin()" mat-raised-button>Login</button>
     </form>
   </div>
 
 
   <h2>Social Login</h2>
 
-  <button type="submit" [routerLink]="getFacebookAuthUrl()" mat-raised-button>Facebook Login</button>
+  <a type="submit" [href]="getFacebookAuthUrl()" mat-raised-button>Facebook Login</a>
   <!--<button type="submit" (click)="restAuthLogin()" mat-raised-button>Twitter Login</button>-->
 
 

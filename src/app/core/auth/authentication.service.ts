@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {JWTToken} from "./models/jwt.token";
 import {RestAuthToken} from "./models/rest-auth.token";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Observable} from "rxjs/Observable";
+import {Observable} from "rxjs/observable";
 import {User} from "./models/user";
 import {environment} from '../../../environments/environment';
 

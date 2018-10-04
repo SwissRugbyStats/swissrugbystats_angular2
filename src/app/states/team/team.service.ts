@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BaseService} from '../../core/base.service';
-import { HttpClient } from '@angular/common/http';
-import { Team } from './team';
+import {HttpClient} from '@angular/common/http';
+import {Team} from './team';
 import {TeamDetail} from './team-detail';
-import { Game } from '../game/game';
+import {Game} from '../game/game';
 
 @Injectable()
 export class TeamService extends BaseService<Team, TeamDetail> {
 
   constructor(public http: HttpClient) {
-    super(http, 'teams');
+    super(http);
+    this.endpointUrl = 'teams';
   }
 
   getGames(teamId: number) {
@@ -17,7 +18,6 @@ export class TeamService extends BaseService<Team, TeamDetail> {
     console.log(`get ${url}`);
     return this.http.get<Array<Game>>(`${url}.json`);
   }
-
 
 
 }
