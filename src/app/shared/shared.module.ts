@@ -4,6 +4,7 @@ import {SRSGamesComponent} from './srs-games/srs-games.component';
 import {
   MatButtonModule,
   MatFormFieldModule,
+  MatIconModule,
   MatInputModule,
   MatProgressSpinnerModule,
   MatSnackBarModule,
@@ -20,7 +21,8 @@ import {RouterModule} from '@angular/router';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatIconModule
   ],
   declarations: [
     SRSGamesComponent

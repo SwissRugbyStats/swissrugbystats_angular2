@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://api.swissrugbystats.ch'
+  apiUrl: 'http://api3.swissrugbystats.ch'
 };

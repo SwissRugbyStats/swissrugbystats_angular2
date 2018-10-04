@@ -14,7 +14,7 @@ export class LeagueService extends BaseService<League, League> {
 
   getGames(leagueId: number) {
     // TODO: get games per league only
-    let url = `http://api3.swissrugbystats.ch/games`;
+    let url = `${this.apiUrl}/games`;
     console.log(`get ${url}`);
     return this.http.get<Array<Game>>(`${url}.json`);
   }

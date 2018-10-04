@@ -35,12 +35,13 @@ const JWT_REFRESH_URL = '/api-token-refresh';
 @Injectable()
 export class AuthenticationService {
 
-  apiUrl: string = environment.apiUrl;
+  apiUrl: string;
 
   private authenticationEventSubject = new BehaviorSubject<AuthenticationEvent>(null);
   authenticationEvents$ = this.authenticationEventSubject.asObservable();
 
   constructor(private httpClient: HttpClient) {
+    this.apiUrl = environment.apiUrl;
   }
 
   /**
