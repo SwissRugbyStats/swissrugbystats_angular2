@@ -4,7 +4,7 @@ import {TeamDetail} from '../team-detail';
 import {ActivatedRoute, Params, Router} from '@angular/router';
 import {Chart} from 'chart.js';
 import {GameService} from '../../game/game.service';
-import {Observable} from 'rxjs/observable';
+import {Observable} from 'rxjs/Rx';
 
 @Component({
   selector: 'app-team-detail',

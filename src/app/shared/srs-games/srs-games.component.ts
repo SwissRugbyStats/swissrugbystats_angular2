@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Rx';
 import { Game } from '../../states/game/game';
 import { MatSort, MatTableDataSource } from '@angular/material';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
