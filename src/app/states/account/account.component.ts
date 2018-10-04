@@ -20,8 +20,8 @@ export class AccountComponent implements OnInit {
   protected username: string = '';
   protected password: string = '';
 
-  protected user: User = null;
-  protected socialAccounts: any[] = [];
+  public user: User = null;
+  public socialAccounts: any[] = [];
 
   ngOnInit(): void {
     this.getTokenFromUrl();

@@ -13,7 +13,7 @@ export class BaseService<ListType, DetailType> {
   apiUrl: string = environment.apiUrl;
   epUrl: string;
 
-  constructor(public http: HttpClient, private endpoint: string) {
+  constructor(protected http: HttpClient, public endpoint: string) {
     this.apiUrl = 'http://api3.swissrugbystats.ch/';
     // this.apiUrl = 'http://swissrugbystats-backend.herokuapp.com/';
     this.epUrl = `${this.apiUrl}${endpoint}`;
