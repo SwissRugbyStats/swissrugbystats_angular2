@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {AuthenticationEvent, AuthenticationService} from "../../core/auth/authentication.service";
 import {CrawlerService} from "../../core/crawler/crawler.service";
 import {User} from "../../core/auth/models/user";
-import {MatSnackBar} from "@angular/material";
 
 @Component({
   selector: 'account-overview',
@@ -23,6 +22,13 @@ export class AccountComponent implements OnInit {
   public user: User = null;
   public socialAccounts: any[] = [];
 
+  constructor(
+    private route: ActivatedRoute,
+    private authenticationService: AuthenticationService,
+    private crawlerService: CrawlerService
+  ) {
+  }
+
   ngOnInit(): void {
     this.getTokenFromUrl();
     this.authenticationService.authenticationEvents$.subscribe(val => {
@@ -40,18 +46,6 @@ export class AccountComponent implements OnInit {
   getUserDetails(): void {
     this.authenticationService.getUserDetails().subscribe(user => this.user = user);
     this.authenticationService.getSocialAccounts().subscribe(socialAccounts => this.socialAccounts = socialAccounts);
-  }
-
-  constructor(
-    private route: ActivatedRoute,
-    private authenticationService: AuthenticationService,
-    private crawlerService: CrawlerService,
-    private snackBar: MatSnackBar
-  ) {
-  }
-
-  facebookLogin() {
-    this.authenticationService.loginFacebook(this.token);
   }
 
   logout(): void {
@@ -73,7 +67,6 @@ export class AccountComponent implements OnInit {
         console.log('attempt facebook login', fbToken)
         this.authenticationService.loginFacebook(fbToken);
       }
-      this.token = fragment;
       return fragment;
     })
   }
@@ -83,12 +76,7 @@ export class AccountComponent implements OnInit {
   }
 
   startCrawler() {
-    this.crawlerService.start()
-      .subscribe(val => {
-        console.log('crawler started', val);
-        this.snackBar.open('Crawler started', 'OK', {duration: 5000});
-      })
-    ;
+    this.crawlerService.start();
   }
 
 }

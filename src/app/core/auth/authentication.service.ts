@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {JWTToken} from "./models/jwt.token";
 import {RestAuthToken} from "./models/rest-auth.token";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {Observable} from "rxjs/Rx";
 import {User} from "./models/user";
 import {environment} from '../../../environments/environment';
+import {NotificationService} from "../notification/notification.service";
 
 export const AUTH_TOKEN_KEY = 'authToken';
 
@@ -40,33 +40,10 @@ export class AuthenticationService {
   private authenticationEventSubject = new BehaviorSubject<AuthenticationEvent>(null);
   authenticationEvents$ = this.authenticationEventSubject.asObservable();
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private notificationService: NotificationService) {
     this.apiUrl = environment.apiUrl;
   }
 
-  /**
-   * TODO: currently disabled on the backend
-   * @param {string} username
-   * @param {string} password
-   */
-  loginJWT(username: string, password: string): void {
-    this.resetAuthToken();
-    const body = {
-      username: username,
-      password: password
-    };
-    this.httpClient.post(this.apiUrl + JWT_LOGIN_URL, body, {})
-      .subscribe((val: JWTToken) => {
-        console.log('login success', val);
-        this.setAuthToken(val.token);
-      });
-  }
-
-  /**
-   *
-   * @param {string} username
-   * @param {string} password
-   */
   loginRestAuth(username: string, password: string): void {
     this.resetAuthToken();
     const body = {
@@ -74,8 +51,12 @@ export class AuthenticationService {
       password: password
     };
     this.httpClient.post(this.apiUrl + REST_AUTH_LOGIN_URL, body, {})
+      .catch(err => {
+        this.notificationService.showNotification('There was an error logging in. Please try again.');
+        return Observable.empty();
+      })
       .subscribe((val: RestAuthToken) => {
-        console.log('login success', val);
+        this.notificationService.showNotification('Login successful.');
         this.setAuthToken(val.key);
       });
   }
@@ -86,15 +67,27 @@ export class AuthenticationService {
       access_token: token
     };
     this.httpClient.post(this.apiUrl + REST_AUTH_FACEBOOK_LOGIN_URL, body, {})
+      .catch(err => {
+        console.error('Error with Facebook login', err);
+        this.notificationService.showNotification('There was an error when logging in with Facebook');
+        return Observable.empty();
+      })
       .subscribe((val: RestAuthToken) => {
-        console.log('login success', val);
+        this.notificationService.showNotification('Facebook Login successful.');
         this.setAuthToken(val.key);
       });
   }
 
   logout() {
-    this.httpClient.post(this.apiUrl + REST_AUTH_LOGOUT_URL, {}).subscribe(val => console.log('logged out'));
-    this.resetAuthToken();
+    this.httpClient.post(this.apiUrl + REST_AUTH_LOGOUT_URL, {})
+      .catch(err => {
+        this.notificationService.showNotification('There was a problem during logout.');
+        return Observable.empty();
+      })
+      .subscribe(val => {
+        this.resetAuthToken();
+        this.notificationService.showNotification('Logout successful.');
+      });
   }
 
   setAuthToken(authToken: string) {

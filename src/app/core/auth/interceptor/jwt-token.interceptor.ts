@@ -11,8 +11,6 @@ export class JWTTokenInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    console.log('set headers', sessionStorage.getItem(AUTH_TOKEN_KEY));
-
     let headers;
 
     if (sessionStorage.getItem(AUTH_TOKEN_KEY)) {
@@ -20,8 +18,6 @@ export class JWTTokenInterceptor implements HttpInterceptor {
         .set('Content-Type', 'application/json')
         .set('Authorization', `JSONWT ${sessionStorage.getItem(AUTH_TOKEN_KEY)}`);
     }
-
-    console.log('set headers', headers);
 
     const cloneReq = request.clone({headers});
 
