@@ -8,7 +8,7 @@
   <p>Social Accounts: </p>
   <ul *ngIf="socialAccounts.length > 0">
     <li *ngFor="let acc of socialAccounts">
-      {{ acc | json }}
+      {{ acc.provider }} ({{acc.uid}}) - <a (click)="disconnectSocialAccount(acc)">Disconnect Account</a>
     </li>
   </ul>
   <div *ngIf="socialAccounts.length == 0">

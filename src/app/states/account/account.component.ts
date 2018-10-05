@@ -3,6 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {AuthenticationEvent, AuthenticationService} from "../../core/auth/authentication.service";
 import {CrawlerService} from "../../core/crawler/crawler.service";
 import {User} from "../../core/auth/models/user";
+import {environment} from "../../../environments/environment";
+import {SocialAccount} from "../../core/auth/models/social-account";
 
 @Component({
   selector: 'account-overview',
@@ -12,15 +14,14 @@ import {User} from "../../core/auth/models/user";
 })
 export class AccountComponent implements OnInit {
 
-  public token;
   private fb_app_id = 526206374398565;
-  private host = 'http://swissrugbystats-frontend.herokuapp.com';
+  private host = environment.hostUrl;
 
   protected username: string = '';
   protected password: string = '';
 
   public user: User = null;
-  public socialAccounts: any[] = [];
+  public socialAccounts: SocialAccount[] = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -32,10 +33,15 @@ export class AccountComponent implements OnInit {
   ngOnInit(): void {
     this.getTokenFromUrl();
     this.authenticationService.authenticationEvents$.subscribe(val => {
-      if (val === AuthenticationEvent.LOGIN) {
-        this.getUserDetails();
-      } else if (val === AuthenticationEvent.LOGOUT) {
-        this.user = null;
+      switch (val) {
+        case AuthenticationEvent.LOGIN:
+        case AuthenticationEvent.SOCIAL_CONNECTED:
+        case AuthenticationEvent.SOCIAL_DISCONNECTED:
+          this.getUserDetails();
+          break;
+        case AuthenticationEvent.LOGOUT:
+          this.user = null;
+          break;
       }
     });
     if (this.authenticationService.getAuthToken()) {
@@ -65,7 +71,7 @@ export class AccountComponent implements OnInit {
         // extract social token
         const fbToken = fragment.split('&')[0].split('=')[1];
 
-        if (this.user) {
+        if (this.authenticationService.getAuthToken()) {
           this.authenticationService.connectFacebook(fbToken);
         } else {
           this.authenticationService.loginFacebook(fbToken);
@@ -81,6 +87,15 @@ export class AccountComponent implements OnInit {
 
   startCrawler() {
     this.crawlerService.start();
+  }
+
+  disconnectSocialAccount(socialAccount: SocialAccount) {
+    if (socialAccount.provider === 'facebook') {
+      this.authenticationService.disconnectFacebook('', socialAccount.id);
+    } else {
+      console.log('sorry, no idea what to do');
+    }
+
   }
 
 }

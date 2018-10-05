@@ -11,7 +11,9 @@ export const AUTH_TOKEN_KEY = 'authToken';
 
 export enum AuthenticationEvent {
   LOGIN,
-  LOGOUT
+  LOGOUT,
+  SOCIAL_CONNECTED,
+  SOCIAL_DISCONNECTED,
 }
 
 // rest auth endpoints: https://django-rest-auth.readthedocs.io/en/latest/api_endpoints.html
@@ -25,7 +27,7 @@ const REST_AUTH_USER_URL = '/rest-auth/user/';
 const REST_AUTH_REGISTRATION_URL = '/rest-auth/registration/';
 const REST_AUTH_REGISTRATION_VERIFY_EMAIL_URL = '/rest-auth/registration/verify-email';
 const REST_AUTH_FACEBOOK_LOGIN_URL = '/rest-auth/facebook/';
-const REST_AUTH_FACEBOOK_CONNECT_URL = '/rest-auth/facebook/connect';
+const REST_AUTH_FACEBOOK_CONNECT_URL = '/rest-auth/facebook/connect/';
 const REST_AUTH_TWITTER_LOGIN_URL = '/rest-auth/twitter/';
 const REST_AUTH_SOCIALACCOUNTS = '/socialaccounts/';
 
@@ -80,7 +82,6 @@ export class AuthenticationService {
   }
 
   connectFacebook(token: string): void {
-    this.resetAuthToken();
     const body = {
       access_token: token
     };
@@ -92,7 +93,23 @@ export class AuthenticationService {
       })
       .subscribe((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook connection successful.');
-        this.setAuthToken(val.key);
+        this.authenticationEventSubject.next(AuthenticationEvent.SOCIAL_CONNECTED);
+      });
+  }
+
+  disconnectFacebook(token: string, pk: number): void {
+    const body = {
+      access_token: token
+    };
+    this.httpClient.post(this.apiUrl + REST_AUTH_SOCIALACCOUNTS + pk + '/disconnect/', body, {})
+      .catch(err => {
+        console.error('Error disconnecting Facebook', err);
+        this.notificationService.showNotification('There was an error when disconnecting account to Facebook');
+        return Observable.empty();
+      })
+      .subscribe((val: RestAuthToken) => {
+        this.notificationService.showNotification('Facebook disconnection successful.');
+        this.authenticationEventSubject.next(AuthenticationEvent.SOCIAL_DISCONNECTED);
       });
   }
 
