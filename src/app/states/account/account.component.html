@@ -6,11 +6,16 @@
 
   <p>Email: {{ user.email }}</p>
   <p>Social Accounts: </p>
-  <ul>
+  <ul *ngIf="socialAccounts.length > 0">
     <li *ngFor="let acc of socialAccounts">
       {{ acc | json }}
     </li>
   </ul>
+  <div *ngIf="socialAccounts.length == 0">
+    <p>Keine Social Accounts gefunden.</p>
+    <p><a type="submit" [href]="getFacebookAuthUrl()" mat-raised-button>Facebook Login verknüpfen</a></p>
+  </div>
+
 
   <p>
     <button (click)="startCrawler()" mat-raised-button>Start Crawler</button>
