@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {Game} from "./game";
 import {BaseService} from "../../core/base.service";
 
@@ -7,7 +7,8 @@ import {BaseService} from "../../core/base.service";
 export class GameService extends BaseService<Game, Game> {
 
   constructor(public http: HttpClient) {
-    super(http, "games");
+    super(http);
+    this.endpointUrl = 'games';
   }
 
 }

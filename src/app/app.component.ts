@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-import { TeamService } from './states/team/team.service';
-import { Team } from './states/team/team';
-import { TeamListComponent } from './states/team/team-list/team-list.component'
+import {Component, OnInit} from '@angular/core';
+import {TeamService} from './states/team/team.service';
 
 @Component({
   selector: 'app-root',
@@ -9,15 +7,12 @@ import { TeamListComponent } from './states/team/team-list/team-list.component'
   styleUrls: ['./app.component.css'],
   providers: [TeamService]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Swiss Rugby Stats 2.0';
-  teams: Array<Team> = [];
 
-  constructor(teamservice: TeamService) {
-    teamservice.getList().subscribe((t => {
-      this.teams = t;
-    }));
+  constructor() {
+  }
 
-
+  ngOnInit() {
   }
 }

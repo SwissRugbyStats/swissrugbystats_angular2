@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { LeagueService } from '../league.service';
-import { League } from '../league';
+import {Component, OnInit} from '@angular/core';
+import {LeagueService} from '../league.service';
+import {League} from '../league';
 
 @Component({
   selector: 'app-team-list',
@@ -13,13 +13,14 @@ export class LeagueListComponent implements OnInit {
   private _leagues: Array<League> = [];
   public filter: string;
 
-  constructor(leagueService: LeagueService) {
-    leagueService.getList().subscribe((t => {
-      this._leagues = t;
-    }));
+  constructor(private leagueService: LeagueService) {
+
   }
 
   ngOnInit() {
+    this.leagueService.getList().subscribe((t => {
+      this._leagues = t;
+    }));
   }
 
   get leagues(): Array<League> {

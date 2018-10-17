@@ -1,11 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { SRSGamesComponent } from './srs-games/srs-games.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {SRSGamesComponent} from './srs-games/srs-games.component';
 import {
-  MatButtonModule, MatFormFieldModule, MatInputModule, MatProgressSpinnerModule,
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatSnackBarModule,
   MatTableModule
 } from '@angular/material';
-import { RouterModule } from '@angular/router';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
@@ -15,7 +20,9 @@ import { RouterModule } from '@angular/router';
     MatProgressSpinnerModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule,
+    MatIconModule
   ],
   declarations: [
     SRSGamesComponent
@@ -24,4 +31,5 @@ import { RouterModule } from '@angular/router';
     SRSGamesComponent
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

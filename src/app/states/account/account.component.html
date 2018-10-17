@@ -1,6 +1,51 @@
 <h1>Account</h1>
 
-<p><a href="https://www.facebook.com/v2.3/dialog/oauth?app_id=526206374398565&redirect_uri=http://swissrugbystats-frontend.herokuapp.com/account&response_type=token">Sign Up with Facebook</a></p>
+<div *ngIf="user">
+  <h2 *ngIf="user.first_name">Hallo {{ user.first_name }}!</h2>
+  <h2 *ngIf="!user.first_name && user.username">Hallo {{ user.username }}!</h2>
 
-<h2>Token</h2>
-{{token}}
+  <p>Email: {{ user.email }}</p>
+  <p>Social Accounts: </p>
+  <ul *ngIf="socialAccounts.length > 0">
+    <li *ngFor="let acc of socialAccounts">
+      {{ acc.provider }} ({{acc.uid}}) - <a (click)="disconnectSocialAccount(acc)">Disconnect Account</a>
+    </li>
+  </ul>
+  <div *ngIf="socialAccounts.length == 0">
+    <p>Keine Social Accounts gefunden.</p>
+    <p><a type="submit" [href]="getFacebookAuthUrl()" mat-raised-button>Facebook Login verknüpfen</a></p>
+  </div>
+
+
+  <p>
+    <button (click)="startCrawler()" mat-raised-button>Start Crawler</button>
+  </p>
+  <p>
+    <button (click)="logout()" mat-raised-button>Logout</button>
+  </p>
+</div>
+
+<div *ngIf="!user">
+
+  <h2>Regular Login</h2>
+  <div>
+    <form>
+      <mat-form-field>
+        <input autofocus matInput placeholder="User" [(ngModel)]="username" type="text" name="username">
+      </mat-form-field>
+      <mat-form-field>
+        <input autofocus matInput placeholder="Password" [(ngModel)]="password" type="password" name="password">
+      </mat-form-field>
+
+      <button type="submit" (click)="restAuthLogin()" mat-raised-button>Login</button>
+    </form>
+  </div>
+
+
+  <h2>Social Login</h2>
+
+  <a type="submit" [href]="getFacebookAuthUrl()" mat-raised-button>Facebook Login</a>
+  <!--<button type="submit" (click)="restAuthLogin()" mat-raised-button>Twitter Login</button>-->
+
+
+</div>

@@ -1,27 +1,29 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-import { MaterialModule } from './material/material.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { ChSwissrugbystatsAngular2RoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { TeamListComponent } from './states/team/team-list/team-list.component';
-import { TeamDetailComponent } from './states/team/team-detail/team-detail.component';
-import { GameDetailComponent } from './states/game/game-detail/game-detail.component';
-import { GameListComponent } from './states/game/game-list/game-list.component';
-import { ChSwissrugbystatsAngular2RoutingModule } from './app-routing.module';
+import { RestAuthTokenInterceptor } from './core/auth/interceptor/rest-auth-token.interceptor';
+import { CoreModule } from './core/core.module';
+import { MaterialModule } from './material/material.module';
+import { SharedModule } from './shared/shared.module';
+import { AccountComponent } from './states/account/account.component';
 import { ClubDetailComponent } from './states/club/club-detail/club-detail.component';
 import { ClubListComponent } from './states/club/club-list/club-list.component';
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { AccountComponent } from './states/account/account.component';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { GameDetailComponent } from './states/game/game-detail/game-detail.component';
+import { GameListComponent } from './states/game/game-list/game-list.component';
 import { LandingComponent } from './states/landing/landing.component';
 import { LeagueDetailComponent } from './states/league/league-detail/league-detail.component';
 import { LeagueListComponent } from './states/league/league-list/league-list.component';
-import { SharedModule } from './shared/shared.module';
 import { MapComponent } from './states/map/map.component';
-import { TosComponent } from './states/tos/tos.component';
 import { PrivacyComponent } from './states/privacy/privacy.component';
+import { TeamDetailComponent } from './states/team/team-detail/team-detail.component';
+import { TeamListComponent } from './states/team/team-list/team-list.component';
+import { TosComponent } from './states/tos/tos.component';
 
 @NgModule({
   declarations: [
@@ -38,9 +40,10 @@ import { PrivacyComponent } from './states/privacy/privacy.component';
     LandingComponent,
     MapComponent,
     TosComponent,
-    PrivacyComponent
+    PrivacyComponent,
   ],
   imports: [
+    CoreModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
@@ -48,9 +51,13 @@ import { PrivacyComponent } from './states/privacy/privacy.component';
     MaterialModule,
     FlexLayoutModule,
     ChSwissrugbystatsAngular2RoutingModule,
-    SharedModule
+    SharedModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // {provide: HTTP_INTERCEPTORS, useClass: JWTTokenInterceptor, multi: true}
+    { provide: HTTP_INTERCEPTORS, useClass: RestAuthTokenInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
