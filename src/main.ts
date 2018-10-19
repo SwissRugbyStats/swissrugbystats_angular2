@@ -10,10 +10,5 @@ if (environment.production) {
   enableProdMode();
 }
 
-// check if https active, because that would cause trouble with the backend
-if (location.protocol !== 'http:') {
-  location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
-}
-
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.log(err));
