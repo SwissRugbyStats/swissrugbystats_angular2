@@ -42,15 +42,20 @@ main {
   width: 100%;
   min-height: 100%;
   margin: 0 auto;
-  padding: 2em 1em;
+  padding: 2rem 1rem;
+
+  mat-toolbar.content-header {
+    height: auto !important;
+    margin-left: -1rem;
+    width: 100vw;
+    margin-top: -2rem;
+    padding: 2rem 1rem;
+  }
+
 }
 
 .team-logo {
   max-height: 250px;
-}
-
-mat-toolbar.content-header {
-  height: auto !important;
 }
 
 .team-list-logo {
