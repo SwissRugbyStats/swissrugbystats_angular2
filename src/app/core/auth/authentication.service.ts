@@ -139,6 +139,10 @@ export class AuthenticationService {
     return sessionStorage.getItem(AUTH_TOKEN_KEY);
   }
 
+  getRoles() {
+    return [];
+  }
+
   /**
    * Only works when authenticated.
    * @returns {Observable<any>}

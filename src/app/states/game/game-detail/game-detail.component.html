@@ -1,9 +1,15 @@
 <mat-toolbar color="accent" class="content-header">
-    <img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" class="team-logo">
-    <h1 class="page-header"><a routerLink="/teams/{{game?.host?.team.id}}">{{game?.host?.team.name}}</a></h1>
-    <h1 class="page-header"> {{ game?.host?.score }} vs {{ game?.guest?.score }} </h1>
-    <h1 class="page-header"><a routerLink="/teams/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}</a></h1>
-    <img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" class="team-logo">
+  <img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}"
+       class="team-logo">
+  <h1 class="page-header"><a routerLink="/teams/{{game?.host?.team.id}}">{{game?.host?.team.name}}</a></h1>
+  <h1 class="page-header"> {{ game?.host?.score }} vs {{ game?.guest?.score }} </h1>
+  <h1 class="page-header"><a routerLink="/teams/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}</a></h1>
+  <img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}"
+       class="team-logo">
+
+  <div *ngIf="authenticated">
+    <button (click)="startCrawler()" mat-raised-button>Start Crawler</button>
+  </div>
 </mat-toolbar>
 
 
@@ -17,47 +23,47 @@
         </tr>
     </thead>
     -->
-    <tbody>
-    <!--
-        <tr>
-            <td><img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" id="team-logo"></td>
-            <td><h1 id="result" *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">{{game?.host?.score}} : {{game?.guest?.score}}</h1></td>
-            <td><img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" id="team-logo"></td>
-        </tr>
+  <tbody>
+  <!--
+      <tr>
+          <td><img src="{{game?.host?.team.logo}}" alt="{{game?.host?.team.name}}" title="{{game?.host?.team.name}}" id="team-logo"></td>
+          <td><h1 id="result" *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">{{game?.host?.score}} : {{game?.guest?.score}}</h1></td>
+          <td><img src="{{game?.guest?.team.logo}}" alt="{{game?.guest?.team.name}}" title="{{game?.guest?.team.name}}" id="team-logo"></td>
+      </tr>
 -->
-        <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
-            <th>Kickoff</th>
-            <td colspan="2">{{game?.date | date:"dd.MM.yyyy',' HH:mm"}}</td>
-        </tr>
+  <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
+    <th>Kickoff</th>
+    <td colspan="2">{{game?.date | date:"dd.MM.yyyy',' HH:mm"}}</td>
+  </tr>
 
-        <tr *ngIf="game?.venue">
-            <th>Venue</th>
-            <td colspan="2"><a routerLink="/venues/{{game?.venue?.id}}">{{game?.venue?.name}}</a></td>
-        </tr>
+  <tr *ngIf="game?.venue">
+    <th>Venue</th>
+    <td colspan="2"><a routerLink="/venues/{{game?.venue?.id}}">{{game?.venue?.name}}</a></td>
+  </tr>
 
-        <tr *ngIf="game?.referee?.name">
-            <th>Referee</th>
-            <td colspan="2">{{game?.referee?.name}}</td>
-        </tr>
+  <tr *ngIf="game?.referee?.name">
+    <th>Referee</th>
+    <td colspan="2">{{game?.referee?.name}}</td>
+  </tr>
 
-        <tr *ngIf="game?.host?.forfait || game?.guest?.forfait">
-            <td><span *ngIf="game?.host?.forfait">Forfait gegeben</span></td>
-            <th>Forfait?</th>
-            <td><span *ngIf="game?.guest?.forfait">Forfait gegeben</span></td>
-        </tr>
+  <tr *ngIf="game?.host?.forfait || game?.guest?.forfait">
+    <td><span *ngIf="game?.host?.forfait">Forfait gegeben</span></td>
+    <th>Forfait?</th>
+    <td><span *ngIf="game?.guest?.forfait">Forfait gegeben</span></td>
+  </tr>
 
-        <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
-            <td>{{game?.host?.tries}}</td>
-            <th>Tries</th>
-            <td>{{game?.guest?.tries}}</td>
-        </tr>
+  <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
+    <td>{{game?.host?.tries}}</td>
+    <th>Tries</th>
+    <td>{{game?.guest?.tries}}</td>
+  </tr>
 
-        <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
-            <td>{{game?.host?.redCards}}</td>
-            <th>Red Cards</th>
-            <td>{{game?.guest?.redCards}}</td>
-        </tr>
-    </tbody>
+  <tr *ngIf="game?.host?.score >= 0 && game?.guest?.score >= 0">
+    <td>{{game?.host?.redCards}}</td>
+    <th>Red Cards</th>
+    <td>{{game?.guest?.redCards}}</td>
+  </tr>
+  </tbody>
 </table>
 
 <a href="{{game.fsrUrl}}">View Game on suisserugby.com</a>

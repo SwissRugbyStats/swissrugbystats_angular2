@@ -1,8 +1,9 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs/Rx";
-import {environment} from "../../../environments/environment";
-import {NotificationService} from "../notification/notification.service";
+import { Injectable } from '@angular/core';
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs/Rx";
+import { environment } from "../../../environments/environment";
+import { NotificationService } from "../notification/notification.service";
+import { Game } from "../../states/game/game";
 
 @Injectable()
 export class CrawlerService {
@@ -28,6 +29,19 @@ export class CrawlerService {
         console.log('crawler started', val);
         this.notificationService.showNotification('Crawler started');
       });
+  }
+
+  crawlGame(gameId: number): Observable<Game> {
+    return this.httpClient.post(this.apiUrl + '/crawler/game/' + gameId)
+      .catch(err => {
+        console.error('error when crawling game', err)
+        this.notificationService.showNotification('Crawler Error')
+        return Observable.empty()
+      })
+      .subscribe(val => {
+        console.log('crawler started', val)
+        this.notificationService.showNotification('Game crawled')
+      })
   }
 
 }
