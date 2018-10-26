@@ -24,6 +24,8 @@ import { PrivacyComponent } from './states/privacy/privacy.component';
 import { TeamDetailComponent } from './states/team/team-detail/team-detail.component';
 import { TeamListComponent } from './states/team/team-list/team-list.component';
 import { TosComponent } from './states/tos/tos.component';
+import { CompetitionDetailComponent } from './states/competition/competition-detail/competition-detail.component';
+import { CompetitionListComponent } from './states/competition/competition-list/competition-list.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { TosComponent } from './states/tos/tos.component';
     MapComponent,
     TosComponent,
     PrivacyComponent,
+    CompetitionDetailComponent,
+    CompetitionListComponent,
   ],
   imports: [
     CoreModule,

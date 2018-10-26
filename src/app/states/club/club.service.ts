@@ -13,7 +13,7 @@ export class ClubService extends BaseService<Club, Club> {
   }
 
   getTeams(clubId: number) {
-    let url = `${this.apiUrl}/teams/?club=${clubId}`;
+    let url = `${this.apiUrl}/teams?club=${clubId}`;
     console.log(`get ${url}`);
     return this.http.get<Array<Team>>(`${url}`);
   }
