@@ -37,7 +37,7 @@ export class GameDetailComponent implements OnInit {
 
   startCrawler() {
     this.crawlerService.crawlGame(this.game.id)
-      .subscribe(game => this.game = game);
+      .subscribe((t => this.game = t));
   }
 
 }
