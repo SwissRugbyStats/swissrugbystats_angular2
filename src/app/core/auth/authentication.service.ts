@@ -26,10 +26,10 @@ const REST_AUTH_PASSWORD_CHANGE_URL = '/rest-auth/password/change/';
 const REST_AUTH_USER_URL = '/rest-auth/user/';
 const REST_AUTH_REGISTRATION_URL = '/rest-auth/registration/';
 const REST_AUTH_REGISTRATION_VERIFY_EMAIL_URL = '/rest-auth/registration/verify-email';
-const REST_AUTH_FACEBOOK_LOGIN_URL = '/rest-auth/facebook/';
-const REST_AUTH_FACEBOOK_CONNECT_URL = '/rest-auth/facebook/connect/';
-const REST_AUTH_TWITTER_LOGIN_URL = '/rest-auth/twitter/';
-const REST_AUTH_SOCIALACCOUNTS = '/socialaccounts/';
+const REST_AUTH_FACEBOOK_LOGIN_URL = '/rest-auth/facebook';
+const REST_AUTH_FACEBOOK_CONNECT_URL = '/rest-auth/facebook/connect';
+const REST_AUTH_TWITTER_LOGIN_URL = '/rest-auth/twitter';
+const REST_AUTH_SOCIALACCOUNTS = '/socialaccounts';
 
 // JWT urls - currently disabled
 const JWT_LOGIN_URL = '/api-token-auth';
