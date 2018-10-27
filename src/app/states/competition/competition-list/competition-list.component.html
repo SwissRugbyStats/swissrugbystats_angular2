@@ -8,7 +8,7 @@
   <mat-list-item *ngFor="let competition of competitions; let i=index">
     <a routerLink="/competitions/{{competition.id}}" routerLinkActive="active">
       {{competition.league?.name}} {{competition.season?.name}}</a>
-
+    <span style="width: 50px;"></span>
     <a *ngIf="authenticated" mat-button mat-raised-button (click)="crawlCompetition(competition)">Crawl Competition</a>
   </mat-list-item>
 </mat-list>
