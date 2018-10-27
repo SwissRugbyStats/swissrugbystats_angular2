@@ -4,6 +4,7 @@ import { Observable } from "rxjs/Rx";
 import { environment } from "../../../environments/environment";
 import { NotificationService } from "../notification/notification.service";
 import { Game } from "../../states/game/game";
+import { Competition } from "../../states/competition/competition";
 
 @Injectable()
 export class CrawlerService {
@@ -35,13 +36,27 @@ export class CrawlerService {
   crawlGame(gameId: number): Observable<Game> {
     return this.httpClient.post<Game>(this.apiUrl + '/crawler/game/' + gameId, {}, {})
       .catch(err => {
-        console.error('error when crawling game', err)
-        this.notificationService.showNotification('Crawler Error')
-        return Observable.empty()
+        console.error('error when crawling game', err);
+        this.notificationService.showNotification('Crawler Error');
+        return Observable.empty();
       })
       .map(val => {
         console.log('crawler started', val);
         this.notificationService.showNotification('Game crawled');
+        return val;
+      })
+  }
+
+  crawlCompetition(competition: Competition): void {
+    this.httpClient.post<Game>(this.apiUrl + '/crawler/competition/' + competition.id, {}, {})
+      .catch(err => {
+        console.error('error when crawling competition', err);
+        this.notificationService.showNotification('Crawler Error');
+        return Observable.empty();
+      })
+      .subscribe(val => {
+        console.log('crawler started', val);
+        this.notificationService.showNotification(`Crawler started for ${competition.id}`);
         return val;
       })
   }

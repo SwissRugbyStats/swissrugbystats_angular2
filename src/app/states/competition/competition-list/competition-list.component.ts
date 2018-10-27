@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Competition } from "../competition";
 import { CompetitionService } from "../competition.service";
+import { AuthenticationService } from "../../../core/auth/authentication.service";
+import { CrawlerService } from "../../../core/crawler/crawler.service";
 
 @Component({
   selector: 'app-competition-list',
@@ -12,8 +14,11 @@ export class CompetitionListComponent implements OnInit {
 
   private _competitions: Array<Competition> = [];
   public filter: string;
+  public authenticated: boolean;
 
-  constructor(private competitionService: CompetitionService) {
+  constructor(private competitionService: CompetitionService,
+              private authenticationService: AuthenticationService,
+              private crawlerService: CrawlerService) {
 
   }
 
@@ -21,6 +26,8 @@ export class CompetitionListComponent implements OnInit {
     this.competitionService.getList().subscribe((c => {
       this._competitions = c;
     }));
+
+    this.authenticated = !!this.authenticationService.getAuthToken();
   }
 
   get competitions(): Array<Competition> {
@@ -33,5 +40,9 @@ export class CompetitionListComponent implements OnInit {
     } else {
       return this._competitions;
     }
+  }
+
+  crawlCompetition(competition: Competition): void {
+    this.crawlerService.crawlCompetition(competition);
   }
 }
