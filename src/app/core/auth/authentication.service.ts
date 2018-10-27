@@ -47,86 +47,81 @@ export class AuthenticationService {
     this.apiUrl = environment.apiUrl;
   }
 
-  loginRestAuth(username: string, password: string): Observable<RestAuthToken> {
+  loginRestAuth(username: string, password: string): void {
     this.resetAuthToken();
     const body = {
       username: username,
       password: password
     };
-    return this.httpClient.post(this.apiUrl + REST_AUTH_LOGIN_URL, body, {})
+    this.httpClient.post(this.apiUrl + REST_AUTH_LOGIN_URL, body, {})
       .catch(err => {
         this.notificationService.showNotification('There was an error logging in. Please try again.');
         return Observable.empty();
       })
-      .map((val: RestAuthToken) => {
+      .subscribe((val: RestAuthToken) => {
         this.notificationService.showNotification('Login successful.');
         this.setAuthToken(val.key);
-        return val;
       });
   }
 
-  loginFacebook(token: string): Observable<RestAuthToken> {
+  loginFacebook(token: string): void {
     this.resetAuthToken();
     const body = {
       access_token: token
     };
-    return this.httpClient.post(this.apiUrl + REST_AUTH_FACEBOOK_LOGIN_URL, body, {})
+    this.httpClient.post(this.apiUrl + REST_AUTH_FACEBOOK_LOGIN_URL, body, {})
       .catch(err => {
         console.error('Error with Facebook login', err);
         this.notificationService.showNotification('There was an error when logging in with Facebook');
         return Observable.empty();
       })
-      .map((val: RestAuthToken) => {
+      .subscribe((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook Login successful.');
         this.setAuthToken(val.key);
-        return val;
       });
   }
 
-  connectFacebook(token: string): Observable<RestAuthToken> {
+  connectFacebook(token: string): void {
     const body = {
       access_token: token
     };
-    return this.httpClient.post(this.apiUrl + REST_AUTH_FACEBOOK_CONNECT_URL, body, {})
+    this.httpClient.post(this.apiUrl + REST_AUTH_FACEBOOK_CONNECT_URL, body, {})
       .catch(err => {
         console.error('Error connecting Facebook', err);
         this.notificationService.showNotification('There was an error when connecting account to Facebook');
         return Observable.empty();
       })
-      .map((val: RestAuthToken) => {
+      .subscribe((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook connection successful.');
         this.authenticationEventSubject.next(AuthenticationEvent.SOCIAL_CONNECTED);
-        return val;
       });
   }
 
-  disconnectFacebook(token: string, pk: number): Observable<RestAuthToken> {
+  disconnectFacebook(token: string, pk: number): void {
     const body = {
       access_token: token
     };
-    return this.httpClient.post(this.apiUrl + REST_AUTH_SOCIALACCOUNTS + pk + '/disconnect/', body, {})
+    this.httpClient.post(this.apiUrl + REST_AUTH_SOCIALACCOUNTS + pk + '/disconnect/', body, {})
       .catch(err => {
         console.error('Error disconnecting Facebook', err);
         this.notificationService.showNotification('There was an error when disconnecting account to Facebook');
         return Observable.empty();
       })
-      .map((val: RestAuthToken) => {
+      .subscribe((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook disconnection successful.');
         this.authenticationEventSubject.next(AuthenticationEvent.SOCIAL_DISCONNECTED);
-        return val;
       });
   }
 
-  logout(): Observable<any> {
-    return this.httpClient.post(this.apiUrl + REST_AUTH_LOGOUT_URL, {})
+  logout(): void {
+    this.httpClient.post(this.apiUrl + REST_AUTH_LOGOUT_URL, {})
       .catch(err => {
         this.notificationService.showNotification('There was a problem during logout.');
         return Observable.empty();
       })
-      .map(val => {
+      .subscribe(val => {
         this.resetAuthToken();
         this.notificationService.showNotification('Logout successful.');
-        return val;
       });
   }
 

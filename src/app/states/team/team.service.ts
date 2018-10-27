@@ -1,9 +1,10 @@
-import {Injectable} from '@angular/core';
-import {BaseService} from '../../core/base.service';
-import {HttpClient} from '@angular/common/http';
-import {Team} from './team';
-import {TeamDetail} from './team-detail';
-import {Game} from '../game/game';
+import { Injectable } from '@angular/core';
+import { BaseService } from '../../core/base.service';
+import { HttpClient } from '@angular/common/http';
+import { Team } from './team';
+import { TeamDetail } from './team-detail';
+import { Game } from '../game/game';
+import { Observable } from "rxjs/Observable";
 
 @Injectable()
 export class TeamService extends BaseService<Team, TeamDetail> {
@@ -13,10 +14,10 @@ export class TeamService extends BaseService<Team, TeamDetail> {
     this.endpointUrl = 'teams';
   }
 
-  getGames(teamId: number) {
+  getGames(teamId: number): Observable<Game[]> {
     let url = `${this.getEndpointUrl()}/${teamId}/games`;
     console.log(`get ${url}`);
-    return this.http.get<Array<Game>>(`${url}.json`);
+    return this.http.get<Game[]>(`${url}.json`);
   }
 
 
