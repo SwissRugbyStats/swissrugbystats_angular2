@@ -3,41 +3,44 @@
 
     <mat-table #table [dataSource]="dataSource">
 
-  <!-- Date column -->
-  <ng-container matColumnDef="date">
-    <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
-    <mat-cell *matCellDef="let game">{{game.date | date:'longDate'}} </mat-cell>
-  </ng-container>
+      <!-- Date column -->
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef>Date</mat-header-cell>
+        <mat-cell *matCellDef="let game">{{game.date | date:'longDate'}}</mat-cell>
+      </ng-container>
 
-  <!-- Host team column -->
-  <ng-container matColumnDef="hostTeam">
-    <mat-header-cell *matHeaderCellDef>Host</mat-header-cell>
-    <mat-cell *matCellDef="let game">{{game.host.team.name}}</mat-cell>
-  </ng-container>
+      <!-- Host team column -->
+      <ng-container matColumnDef="hostTeam">
+        <mat-header-cell *matHeaderCellDef>Host</mat-header-cell>
+        <mat-cell *matCellDef="let game">{{game.host.team.name}}</mat-cell>
+      </ng-container>
 
-  <!-- Guest team column -->
-  <ng-container matColumnDef="guestTeam">
-    <mat-header-cell *matHeaderCellDef>Guest</mat-header-cell>
-    <mat-cell *matCellDef="let game">{{game.guest.team.name}}</mat-cell>
-  </ng-container>
+      <!-- Guest team column -->
+      <ng-container matColumnDef="guestTeam">
+        <mat-header-cell *matHeaderCellDef>Guest</mat-header-cell>
+        <mat-cell *matCellDef="let game">{{game.guest.team.name}}</mat-cell>
+      </ng-container>
 
-  <!-- Result column -->
-  <ng-container matColumnDef="result">
-    <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
-    <mat-cell *matCellDef="let game">{{game.host.score}} : {{game.guest.score}}</mat-cell>
-  </ng-container>
+      <!-- Result column -->
+      <ng-container matColumnDef="result">
+        <mat-header-cell *matHeaderCellDef>Result</mat-header-cell>
+        <mat-cell *matCellDef="let game">{{game.host.score}} : {{game.guest.score}}</mat-cell>
+      </ng-container>
 
-  <!-- Result column -->
-  <ng-container matColumnDef="details">
-    <mat-header-cell *matHeaderCellDef>Show Details</mat-header-cell>
-    <mat-cell *matCellDef="let game"><a mat-button routerLink="/games/{{game.id}}">Details</a></mat-cell>
-  </ng-container>
+      <!-- Result column -->
+      <ng-container matColumnDef="details">
+        <mat-header-cell *matHeaderCellDef>Show Details</mat-header-cell>
+        <mat-cell *matCellDef="let game">
+          <a mat-button routerLink="/games/{{game.id}}">Details</a>
+          <a *ngIf="authenticated" mat-button (click)="startCrawler(game)" mat-raised-button>Crawl Game Details</a>
+        </mat-cell>
+      </ng-container>
 
-  <mat-header-row *matHeaderRowDef="['date', 'hostTeam', 'guestTeam', 'result', 'details']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['date', 'hostTeam', 'guestTeam', 'result', 'details'];"></mat-row>
+      <mat-header-row *matHeaderRowDef="['date', 'hostTeam', 'guestTeam', 'result', 'details']"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: ['date', 'hostTeam', 'guestTeam', 'result', 'details'];"></mat-row>
 
 
-</mat-table>
+    </mat-table>
 
 
     <mat-progress-spinner mode="indeterminate" *ngIf="loading">

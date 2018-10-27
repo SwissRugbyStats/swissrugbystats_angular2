@@ -61,6 +61,7 @@ export class AuthenticationService {
       .map((val: RestAuthToken) => {
         this.notificationService.showNotification('Login successful.');
         this.setAuthToken(val.key);
+        return val;
       });
   }
 
@@ -78,6 +79,7 @@ export class AuthenticationService {
       .map((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook Login successful.');
         this.setAuthToken(val.key);
+        return val;
       });
   }
 
@@ -91,9 +93,10 @@ export class AuthenticationService {
         this.notificationService.showNotification('There was an error when connecting account to Facebook');
         return Observable.empty();
       })
-      .subscribe((val: RestAuthToken) => {
+      .map((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook connection successful.');
         this.authenticationEventSubject.next(AuthenticationEvent.SOCIAL_CONNECTED);
+        return val;
       });
   }
 
@@ -110,6 +113,7 @@ export class AuthenticationService {
       .map((val: RestAuthToken) => {
         this.notificationService.showNotification('Facebook disconnection successful.');
         this.authenticationEventSubject.next(AuthenticationEvent.SOCIAL_DISCONNECTED);
+        return val;
       });
   }
 
@@ -122,6 +126,7 @@ export class AuthenticationService {
       .map(val => {
         this.resetAuthToken();
         this.notificationService.showNotification('Logout successful.');
+        return val;
       });
   }
 

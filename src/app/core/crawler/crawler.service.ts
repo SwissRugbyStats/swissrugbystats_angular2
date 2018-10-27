@@ -28,6 +28,7 @@ export class CrawlerService {
       .map(val => {
         console.log('crawler started', val);
         this.notificationService.showNotification('Crawler started');
+        return val;
       });
   }
 
@@ -40,7 +41,8 @@ export class CrawlerService {
       })
       .map(val => {
         console.log('crawler started', val);
-        this.notificationService.showNotification('Game crawled')
+        this.notificationService.showNotification('Game crawled');
+        return val;
       })
   }
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {Game} from "../game";
-import {GameService} from "../game.service";
-import {DataSource} from "@angular/cdk/collections";
-import {Observable} from 'rxjs/Rx';
+import { Game } from "../game";
+import { GameService } from "../game.service";
+import { DataSource } from "@angular/cdk/collections";
+import { Observable } from 'rxjs/Rx';
+import { AuthenticationService } from "../../../core/auth/authentication.service";
+import { CrawlerService } from "../../../core/crawler/crawler.service";
 
 @Component({
   selector: 'app-game-list',
@@ -15,8 +17,12 @@ export class GameListComponent implements OnInit {
   games: Array<Game> = [];
   loading = true;
   dataSource: GamesDataSource;
+  authenticated: boolean;
 
-  constructor(private service: GameService) {}
+  constructor(private service: GameService,
+              private authenticationService: AuthenticationService,
+              private crawlerService: CrawlerService) {
+  }
 
   ngOnInit() {
     const result = this.service.getList();
@@ -26,6 +32,19 @@ export class GameListComponent implements OnInit {
       this.loading = false;
       // this.games.concat(g);
     }));
+
+    this.authenticated = !!this.authenticationService.getAuthToken();
+
+    console.log('authenticated', this.authenticated);
+
+  }
+
+  startCrawler(game) {
+    this.crawlerService.crawlGame(game.id)
+      .subscribe(() => {
+        this.service.getList()
+          .subscribe((val: Game[]) => this.games = val)
+      });
   }
 
 }
@@ -46,10 +65,12 @@ export class GamesDataSource extends DataSource<any> {
     this.observable = obs;
     // this.observable = Observable.of([]);
   }
+
   /** Connect function called by the table to retrieve one stream containing the data to render. */
   connect(): Observable<Game[]> {
     return this.observable;
   }
 
-  disconnect() {}
+  disconnect() {
+  }
 }
