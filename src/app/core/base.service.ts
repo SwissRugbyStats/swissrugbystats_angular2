@@ -10,7 +10,7 @@ export abstract class BaseService<ListType, DetailType> {
   apiUrl: string;
   endpointUrl: string;
 
-  constructor(protected http: HttpClient) {
+  protected constructor(protected http: HttpClient) {
     this.apiUrl = environment.apiUrl;
     this.endpointUrl = '';
   }

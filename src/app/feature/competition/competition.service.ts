@@ -12,11 +12,11 @@ export class CompetitionService extends BaseService <Competition, Competition> {
     this.endpointUrl = 'competitions';
   }
 
-  getGames(seasonId: number) {
+  getGames(competitionId: number) {
     // TODO: get games per competition only
-    let url = `${this.apiUrl}/games?season=${seasonId}`;
+    let url = `${this.apiUrl}/games.json?competition=${competitionId}`;
     console.log(`get ${url}`);
-    return this.http.get<Array<Game>>(`${url}.json`);
+    return this.http.get<Array<Game>>(url);
   }
 
 }

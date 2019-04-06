@@ -86,7 +86,7 @@ export class AccountComponent implements OnInit {
   }
 
   startCrawler() {
-    this.crawlerService.start();
+    this.crawlerService.start().subscribe();
   }
 
   disconnectSocialAccount(socialAccount: SocialAccount) {

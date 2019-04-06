@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {TeamService} from './states/team/team.service';
+import {TeamService} from './feature/team/team.service';
 
 @Component({
   selector: 'app-root',

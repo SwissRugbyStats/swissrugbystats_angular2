@@ -3,8 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs/Rx";
 import { environment } from "../../../environments/environment";
 import { NotificationService } from "../notification/notification.service";
-import { Game } from "../../states/game/game";
-import { Competition } from "../../states/competition/competition";
+import { Game } from "../../feature/game/game";
+import { Competition } from "../../feature/competition/competition";
 
 @Injectable()
 export class CrawlerService {

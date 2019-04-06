@@ -1,20 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GameDetailComponent } from './states/game/game-detail/game-detail.component';
-import { GameListComponent } from './states/game/game-list/game-list.component';
-import { PrivacyComponent } from './states/privacy/privacy.component';
-import { TeamListComponent } from './states/team/team-list/team-list.component';
-import { TeamDetailComponent } from './states/team/team-detail/team-detail.component';
-import { ClubListComponent } from './states/club/club-list/club-list.component';
-import { ClubDetailComponent } from './states/club/club-detail/club-detail.component';
-import { AccountComponent } from './states/account/account.component';
-import { LandingComponent } from './states/landing/landing.component';
-import { LeagueListComponent } from './states/league/league-list/league-list.component';
-import { LeagueDetailComponent } from './states/league/league-detail/league-detail.component';
-import { MapComponent } from './states/map/map.component';
-import { TosComponent } from './states/tos/tos.component';
-import { CompetitionListComponent } from "./states/competition/competition-list/competition-list.component";
-import { CompetitionDetailComponent } from "./states/competition/competition-detail/competition-detail.component";
+import { GameDetailComponent } from './feature/game/game-detail/game-detail.component';
+import { GameListComponent } from './feature/game/game-list/game-list.component';
+import { PrivacyComponent } from './feature/privacy/privacy.component';
+import { TeamListComponent } from './feature/team/team-list/team-list.component';
+import { TeamDetailComponent } from './feature/team/team-detail/team-detail.component';
+import { ClubListComponent } from './feature/club/club-list/club-list.component';
+import { ClubDetailComponent } from './feature/club/club-detail/club-detail.component';
+import { AccountComponent } from './feature/account/account.component';
+import { LeagueListComponent } from './feature/league/league-list/league-list.component';
+import { LeagueDetailComponent } from './feature/league/league-detail/league-detail.component';
+import { MapComponent } from './feature/map/map.component';
+import { TosComponent } from './feature/tos/tos.component';
+import { CompetitionListComponent } from "./feature/competition/competition-list/competition-list.component";
+import { CompetitionDetailComponent } from "./feature/competition/competition-detail/competition-detail.component";
 
 const routes: Routes = [
   {path: 'games', component: GameListComponent},
@@ -31,14 +30,15 @@ const routes: Routes = [
   {path: 'account', component: AccountComponent},
   {path: 'tos', component: TosComponent},
   {path: 'privacy', component: PrivacyComponent},
-  {path: '', component: LandingComponent},
-  {path: '**', component: LandingComponent}
+  {path: '', redirectTo: 'competitions', pathMatch: 'full'},
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes)
+  ],
   exports: [RouterModule],
   providers: []
 })
-export class ChSwissrugbystatsAngular2RoutingModule {
+export class AppRoutingModule {
 }
