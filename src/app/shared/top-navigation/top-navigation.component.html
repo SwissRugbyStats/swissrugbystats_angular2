@@ -1,0 +1,14 @@
+<mat-toolbar color="secondary">
+  <nav>
+    <a mat-button routerLink="/competitions" routerLinkActive="mat-primary">Competitions</a>
+    <a mat-button routerLink="/teams" routerLinkActive="mat-primary">Teams</a>
+    <a mat-button routerLink="/clubs" routerLinkActive="mat-primary">Clubs</a>
+    <!--<a mat-button routerLink="/games" routerLinkActive="mat-primary">Games</a>-->
+    <a mat-button routerLink="/map" routerLinkActive="mat-primary">Club Map</a>
+
+    <a mat-button routerLink="/account" routerLinkActive="mat-primary">
+      <mat-icon>account_circle</mat-icon>
+      <span *ngIf="user"> {{user.username}}</span><span *ngIf="!user"> Log In</span></a>
+  </nav>
+
+</mat-toolbar>
