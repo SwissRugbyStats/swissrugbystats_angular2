@@ -1,15 +1,19 @@
 .mat-column-guestTeam img,
-.mat-column-hostTeam img{
+.mat-column-hostTeam img {
   width: 100%;
-  max-width: 50px;
+  max-width: 130px;
   height: auto;
 }
 
+.mat-column-encounter img {
+  height: 100px;
+  width: auto;
+}
 
 mat-table {
-mat-row:nth-child(2n) {
-  background-color: #f9f9f9;
-}
+  mat-row:nth-child(2n) {
+    background-color: #f9f9f9;
+  }
 }
 
 /* Structure */

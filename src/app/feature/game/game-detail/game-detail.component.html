@@ -5,9 +5,9 @@
     <a mat-button routerLink="/teams/{{game?.host?.team.id}}">&nbsp;{{game?.host?.team.name}}</a>
   </h1>
   <h1 class="page-header">
-    <span class="score-box" *ngIf="game?.host?.score">{{ game?.host?.score }}</span>
+    <span class="score-box" *ngIf="game?.host?.score || game?.host?.score == 0">{{ game?.host?.score }}</span>
     <span>&nbsp;vs&nbsp;</span>
-    <span class="score-box" *ngIf="game?.guest?.score">{{ game?.guest?.score }}</span>
+    <span class="score-box" *ngIf="game?.guest?.score || game?.guest?.score == 0">{{ game?.guest?.score }}</span>
   </h1>
   <h1 class="page-header">
     <a mat-button routerLink="/teams/{{game?.guest?.team.id}}">{{game?.guest?.team.name}}&nbsp;</a>
