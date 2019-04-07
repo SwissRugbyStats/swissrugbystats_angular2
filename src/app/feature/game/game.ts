@@ -1,5 +1,4 @@
-import {GameParticipation} from "./gameparticipation";
-import {Venue} from "../venue/venue";
+import { GameParticipation } from "./gameparticipation";
 
 export class Game {
   id: number;

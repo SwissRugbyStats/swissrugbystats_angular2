@@ -14,6 +14,7 @@ import { MapComponent } from './feature/map/map.component';
 import { TosComponent } from './feature/tos/tos.component';
 import { CompetitionListComponent } from "./feature/competition/competition-list/competition-list.component";
 import { CompetitionDetailComponent } from "./feature/competition/competition-detail/competition-detail.component";
+import { VenueComponent } from "./feature/venue/venue.component";
 
 const routes: Routes = [
   {path: 'games', component: GameListComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path: 'teams/:id', component: TeamDetailComponent},
   {path: 'clubs', component: ClubListComponent},
   {path: 'clubs/:id', component: ClubDetailComponent},
+  {path: 'venues/:id', component: VenueComponent},
   {path: 'leagues', component: LeagueListComponent},
   {path: 'leagues/:id', component: LeagueDetailComponent},
   {path: 'competitions', component: CompetitionListComponent},

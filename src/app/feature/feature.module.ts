@@ -22,6 +22,8 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 import { RouterModule } from "@angular/router";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { VenueComponent } from './venue/venue.component';
+import { CoreModule } from "../core/core.module";
 
 const components = [
   TeamListComponent,
@@ -39,15 +41,18 @@ const components = [
   PrivacyComponent,
   CompetitionDetailComponent,
   CompetitionListComponent,
+  VenueComponent
 ];
 
 @NgModule({
   imports: [
     RouterModule,
     CommonModule,
-    SharedModule,
     FormsModule,
     HttpClientModule,
+
+    SharedModule,
+    CoreModule,
 
     MaterialModule,
     MatOptionModule,
