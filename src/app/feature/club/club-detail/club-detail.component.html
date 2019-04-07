@@ -1,18 +1,30 @@
 <mat-toolbar color="accent" class="content-header">
-    <img *ngIf="club?.logo" src="{{club?.logo}}" title="{{club?.name}}" alt="{{club?.name}}"/>
+  <img *ngIf="club?.logo" src="{{club?.logo}}" title="{{club?.name}}" alt="{{club?.name}}"/>
   <div>
-     <h1>{{club?.name}}</h1>
+    <h1>{{club?.name}}</h1>
     <div><a href="{{club.website}}" target="_blank">{{club.website}}</a></div>
   </div>
 
 </mat-toolbar>
+
+<!--
+<mat-toolbar color="secondary">
+  <nav>
+    <a mat-button routerLink="competitions" routerLinkActive="mat-primary">Teams</a>
+    <a mat-button routerLink="venue" routerLinkActive="mat-primary">Venue</a>
+    <a mat-button routerLink="contact" routerLinkActive="mat-primary">Contact</a>
+  </nav>
+
+</mat-toolbar>
+<router-outlet></router-outlet>
+-->
 
 
 <h2>Teams</h2>
 
 <mat-list>
   <mat-list-item *ngFor="let team of teams;">
-    <img src="{{ team?.logo }}" class="team-list-logo">
+    <img src="{{ team?.logo }}" class="team-list-logo"/>
     <a routerLink="/teams/{{team.id}}" routerLinkActive="active">{{team?.name}}</a>
 
   </mat-list-item>

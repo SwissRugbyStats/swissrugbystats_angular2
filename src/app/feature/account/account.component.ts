@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {AuthenticationEvent, AuthenticationService} from "../../core/auth/authentication.service";
-import {CrawlerService} from "../../core/crawler/crawler.service";
-import {User} from "../../core/auth/models/user";
-import {environment} from "../../../environments/environment";
-import {SocialAccount} from "../../core/auth/models/social-account";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { AuthenticationEvent, AuthenticationService } from "../../core/auth/authentication.service";
+import { CrawlerService } from "../../core/crawler/crawler.service";
+import { User } from "../../core/auth/models/user";
+import { environment } from "../../../environments/environment";
+import { SocialAccount } from "../../core/auth/models/social-account";
 
 @Component({
   selector: 'account-overview',
@@ -32,7 +32,7 @@ export class AccountComponent implements OnInit {
 
   ngOnInit(): void {
     this.getTokenFromUrl();
-    this.authenticationService.authenticationEvents$.subscribe(val => {
+    this.authenticationService.authenticationEvent$().subscribe(val => {
       switch (val) {
         case AuthenticationEvent.LOGIN:
         case AuthenticationEvent.SOCIAL_CONNECTED:

@@ -40,11 +40,19 @@ export class AuthenticationService {
 
   apiUrl: string;
 
+  private _user = new BehaviorSubject<User>(null);
   private authenticationEventSubject = new BehaviorSubject<AuthenticationEvent>(null);
-  authenticationEvents$ = this.authenticationEventSubject.asObservable();
 
   constructor(private httpClient: HttpClient, private notificationService: NotificationService) {
     this.apiUrl = environment.apiUrl;
+  }
+
+  authenticationEvent$(): Observable<AuthenticationEvent> {
+    return this.authenticationEventSubject.asObservable();
+  }
+
+  user$(): Observable<User> {
+    return this._user.asObservable();
   }
 
   loginRestAuth(username: string, password: string): void {
@@ -133,6 +141,7 @@ export class AuthenticationService {
   resetAuthToken() {
     sessionStorage.removeItem(AUTH_TOKEN_KEY);
     this.authenticationEventSubject.next(AuthenticationEvent.LOGOUT);
+    this._user.next(null);
   }
 
   getAuthToken() {
@@ -145,10 +154,11 @@ export class AuthenticationService {
 
   /**
    * Only works when authenticated.
-   * @returns {Observable<any>}
+   * @returns {Observable<User>}
    */
   getUserDetails(): Observable<User> {
-    return this.httpClient.get(this.apiUrl + REST_AUTH_USER_URL) as Observable<User>;
+    return this.httpClient.get<User>(this.apiUrl + REST_AUTH_USER_URL)
+      .do(user => this._user.next(user));
   }
 
   getSocialAccounts(): Observable<any> {

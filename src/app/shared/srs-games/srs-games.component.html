@@ -1,4 +1,3 @@
-
 <!--<div class="filter-container mat-elevation-z8">
   <div class="filter-header">
     <mat-form-field>
@@ -14,17 +13,33 @@
     <mat-cell *matCellDef="let game">{{game.date | date:'longDate'}}</mat-cell>
   </ng-container>
 
-  <!-- Host team column -->
-  <ng-container matColumnDef="hostTeam">
-    <mat-header-cell *matHeaderCellDef mat-sort-header>Host</mat-header-cell>
-    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.host.team.id}}"><img *ngIf="game.host.team.logo" src="{{game.host.team.logo}}"> {{game.host.team.name}}</a></mat-cell>
+  <!-- Encounter column -->
+  <ng-container matColumnDef="encounter">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Encounter</mat-header-cell>
+    <mat-cell *matCellDef="let game">
+      <img alt="{{game.host.team.name}}" *ngIf="game.host.team.logo" src="{{game.host.team.logo}}">&nbsp;
+      <img alt="{{game.guest.team.name}}" *ngIf="game.guest.team.logo" src="{{game.guest.team.logo}}">&nbsp;
+      <a mat-button routerLink="/games/{{game.id}}">
+        {{game.host.team.name}} vs {{game.guest.team.name}}
+      </a>
+    </mat-cell>
   </ng-container>
 
+  <!-- Host team column -->
+  <!--
+  <ng-container matColumnDef="hostTeam">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Host</mat-header-cell>
+    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.host.team.id}}">
+      <img *ngIf="game.host.team.logo" src="{{game.host.team.logo}}"> {{game.host.team.name}}</a></mat-cell>
+  </ng-container>-->
+
   <!-- Guest team column -->
+  <!--
   <ng-container matColumnDef="guestTeam">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Guest</mat-header-cell>
-    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.guest.team.id}}"><img *ngIf="game.guest.team.logo" src="{{game.guest.team.logo}}"> {{game.guest.team.name}}</a></mat-cell>
-  </ng-container>
+    <mat-cell *matCellDef="let game"><a routerLink="/teams/{{game.guest.team.id}}">
+      <img *ngIf="game.guest.team.logo" src="{{game.guest.team.logo}}"> {{game.guest.team.name}}</a></mat-cell>
+  </ng-container>-->
 
   <!-- Result column -->
   <ng-container matColumnDef="result">
@@ -32,15 +47,40 @@
     <mat-cell *matCellDef="let game">{{game.host.score}} : {{game.guest.score}}</mat-cell>
   </ng-container>
 
-  <!-- Result column -->
+  <!-- League column
+  <ng-container matColumnDef="league">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>League</mat-header-cell>
+    <mat-cell *matCellDef="let game">
+      {{game.competition.league.name}}
+    </mat-cell>
+  </ng-container>-->
+
+  <!-- Season  column
+  <ng-container matColumnDef="season">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Season</mat-header-cell>
+    <mat-cell *matCellDef="let game">
+      {{game.competition.season.name}}
+    </mat-cell>
+  </ng-container>-->
+
+  <!-- Venue  column
+  <ng-container matColumnDef="venue">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Venue</mat-header-cell>
+    <mat-cell *matCellDef="let game">
+      {{game.venue.name}}
+    </mat-cell>
+  </ng-container>-->
+
+  <!-- Details column -->
+  <!--
   <ng-container matColumnDef="details">
     <mat-header-cell *matHeaderCellDef>Show Details</mat-header-cell>
     <mat-cell *matCellDef="let game"><a mat-button routerLink="/games/{{game.id}}">Details</a></mat-cell>
   </ng-container>
-
-  <mat-header-row *matHeaderRowDef="['date', 'hostTeam', 'guestTeam', 'result', 'details']"></mat-header-row>
-  <mat-row *matRowDef="let row; columns: ['date', 'hostTeam', 'guestTeam', 'result', 'details'];"></mat-row>
-
+  -->
+  <mat-header-row *matHeaderRowDef="['date', 'encounter', 'result']"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: ['date', 'encounter', 'result'];"></mat-row>
+  -->
 
 </mat-table>
 
